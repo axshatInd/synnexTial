@@ -32,7 +32,7 @@ function CreateWorkspace() {
             Synnex lets you create a shared space to collaborate with your team.
             <h2>You can always rename it later!</h2>
           </h2>
-          <div>
+          <div className="mt-8">
             <Button variant="outline">
               <SmilePlus />
             </Button>
