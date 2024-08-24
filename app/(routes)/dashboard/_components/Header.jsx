@@ -1,10 +1,13 @@
 import Logo from "@/app/_components/Logo";
+import { UserButton } from "@clerk/nextjs";
 import React from "react";
 
 function Header() {
   return (
-    <div>
+    <div className="flex justify-between items-center">
       <Logo />
+
+      <UserButton />
     </div>
   );
 }
