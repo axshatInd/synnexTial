@@ -8,7 +8,7 @@ function WorkspaceList() {
   return (
     <div className="my-10 p-10 md:px-24 lg:px-36 xl:px-52">
       <div className="flex justify-between">
-        <h2 className="font-semibold text-xl gradient-text">
+        <h2 className="font-semibold text-xl gradient-text3">
           Hello, {user?.username}!
         </h2>
         <Button>+</Button>

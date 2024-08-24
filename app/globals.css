@@ -72,6 +72,12 @@
     color: transparent;
   }
 
+  .gradient-text3 {
+    background: linear-gradient(90deg, #000000, #ff5722);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
   * {
     @apply border-border;
   }
