@@ -10,10 +10,10 @@ function CreateWorkspace() {
       <div>
         {/* Cover Image */}
         <div className="relative group">
-          <h2 className="hidden absolute p-4 w-full h-full items-center group-hover:flex justify-center text-white">
+          <h2 className="hidden absolute p-4 w-full h-full items-center group-hover:flex justify-center text-black">
             Change Cover
           </h2>
-          <div>
+          <div className="group-hover:opacity-70">
             <Image
               src={coverImage}
               width={400}
