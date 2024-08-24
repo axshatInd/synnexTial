@@ -4,7 +4,7 @@ import React from "react";
 
 function Header() {
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex justify-between items-center p-3 shadow-xl">
       <Logo />
 
       <UserButton />
