@@ -5,7 +5,7 @@ function Logo() {
   return (
     <div className="flex items-center gap-1">
       <Image src={"/logo.svg"} alt="Logo" width={30} height={30} />
-      <h2 className="font-semibold text-xl gradient-text">synnex</h2>
+      <h2 className="font-semibold text-xl gradient-text2">synnex</h2>
     </div>
   );
 }

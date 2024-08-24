@@ -65,6 +65,13 @@
     color: transparent;
   }
 
+  .gradient-text2 {
+    background: linear-gradient(to right, #b45309, #92400e, #111111);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
   * {
     @apply border-border;
   }
