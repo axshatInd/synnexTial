@@ -1,7 +1,7 @@
 import { Outfit } from "next/font/google";
 import { Dancing_Script } from "next/font/google";
 import "./globals.css";
-import { ClerkProvider } from "@clerk/nextjs"; // Import Header
+import { ClerkProvider } from "@clerk/nextjs";
 import Header from "./(routes)/dashboard/_components/Header";
 
 // Font configurations
@@ -19,9 +19,9 @@ export default function RootLayout({ children }) {
       <html lang="en">
         <body className={outfit.className}>
           <Header /> {/* Add Header here */}
-          <main className="pt-16">
+          <main className="pt-20">
             {" "}
-            {/* Add padding top to account for header height */}
+            {/* Adjust padding top for header height */}
             {children}
           </main>
         </body>
