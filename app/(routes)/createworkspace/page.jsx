@@ -1,7 +1,7 @@
 import React from "react";
 
-function page() {
-  return <div>page</div>;
+function CreateWorkspace() {
+  return <div>CreateWorkspace</div>;
 }
 
-export default page;
+export default CreateWorkspace;

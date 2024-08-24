@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { useUser } from "@clerk/nextjs";
 import { AlignLeft, LayoutGrid } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useState } from "react";
 
 function WorkspaceList() {
@@ -16,7 +17,9 @@ function WorkspaceList() {
         <h2 className="font-semibold text-xl gradient-text3">
           Hello, {user?.username}!
         </h2>
-        <Button>+</Button>
+        <Link href={"/createworkspace"}>
+          <Button>+</Button>
+        </Link>
       </div>
 
       {/* Main Content Area */}
@@ -39,9 +42,11 @@ function WorkspaceList() {
               alt="Workspace"
             />
             <h2 className="text-lg font-medium mt-2">Create a new Workspace</h2>
-            <Button variant="outline" className="my-3">
-              + New Workspace
-            </Button>
+            <Link href={"/createworkspace"}>
+              <Button variant="outline" className="my-3">
+                + New Workspace
+              </Button>
+            </Link>
           </div>
         ) : (
           <div className="flex-grow mt-4">Workspace List</div>
