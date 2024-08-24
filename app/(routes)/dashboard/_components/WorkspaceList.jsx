@@ -13,6 +13,11 @@ function WorkspaceList() {
         </h2>
         <Button>+</Button>
       </div>
+      <div>
+        <div>
+          <h2 className="font-medium text-primary">Workspaces</h2>
+        </div>
+      </div>
     </div>
   );
 }
