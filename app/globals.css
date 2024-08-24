@@ -57,9 +57,14 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
-}
 
-@layer base {
+  .gradient-text {
+    background: linear-gradient(to right, #f59e0b, #f97316, #b45309);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
   * {
     @apply border-border;
   }
