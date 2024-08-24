@@ -10,7 +10,7 @@ function CreateWorkspace() {
   const [workspacename, setWorkspaceName] = useState();
 
   return (
-    <div className="p-10 md:px-36 lg:px-52 xl:px-80 py-20">
+    <div className="p-10 md:px-36 lg:px-64 xl:px-96 py-28">
       <div className="shadow-2xl rounded-xl">
         {/* Cover Image */}
         <div className="relative group cursor-pointer">
