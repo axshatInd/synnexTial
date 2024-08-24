@@ -1,5 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { SmilePlus } from "lucide-react";
 import Image from "next/image";
 import React, { useState } from "react";
@@ -32,10 +33,11 @@ function CreateWorkspace() {
             Synnex lets you create a shared space to collaborate with your team.
             <h2>You can always rename it later!</h2>
           </h2>
-          <div className="mt-8">
+          <div className="mt-8 flex gap-2 items-center">
             <Button variant="outline">
               <SmilePlus />
             </Button>
+            <Input placeholder="Workspace Name" />
           </div>
         </div>
       </div>
