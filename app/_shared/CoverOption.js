@@ -55,4 +55,12 @@ export default [
     imageUrl:
       "https://img.freepik.com/free-photo/seamless-abstract-pattern-design_23-2151179146.jpg?ga=GA1.1.1679917421.1705195646&semt=ais_user_ai_gen",
   },
+  {
+    imageUrl:
+      "https://img.freepik.com/free-photo/wavy-abstract-shapes_1048-4986.jpg?t=st=1724542071~exp=1724545671~hmac=0db0e9e23510e75d83a87e961b9eb12578db5230a2613d90a7d7545fa4d23543&w=1060",
+  },
+  {
+    imageUrl:
+      "https://img.freepik.com/free-photo/abstract-background-red-bubbles-droplets_116380-53.jpg?t=st=1724542107~exp=1724545707~hmac=ec6a2eb49ad90dddcac5d536738455538aa4312a42f26e34c544eb3919905d83&w=1060",
+  },
 ];
