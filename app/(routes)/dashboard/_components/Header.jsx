@@ -1,10 +1,11 @@
 import Logo from "@/app/_components/Logo";
+import Image from "next/image";
 import React from "react";
 
 function Header() {
   return (
     <div>
-      <Logo />
+      <Image src={"/logo.svg"} alt="Logo" width={30} height={30} />
     </div>
   );
 }
