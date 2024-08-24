@@ -7,6 +7,7 @@ import React, { useState } from "react";
 
 function CreateWorkspace() {
   const [coverImage, setCoverImage] = useState("/cover.png");
+  const [workspacename, setWorkspaceName] = useState();
 
   return (
     <div className="p-10 md:px-36 lg:px-52 xl:px-80 py-20">
@@ -37,7 +38,14 @@ function CreateWorkspace() {
             <Button variant="outline">
               <SmilePlus />
             </Button>
-            <Input placeholder="Workspace Name" />
+            <Input
+              placeholder="Workspace Name"
+              onChange={(e) => setWorkspaceName(e.target.value)}
+            />
+          </div>
+          <div className="mt-7 flex justify-end gap-6">
+            <Button disabled={!workspacename?.length}>Create</Button>
+            <Button variant="outline">Cancel</Button>
           </div>
         </div>
       </div>
