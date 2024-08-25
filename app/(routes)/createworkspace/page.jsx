@@ -12,6 +12,10 @@ function CreateWorkspace() {
   const [workspacename, setWorkspaceName] = useState();
   const [emoji, setEmoji] = useState();
 
+  const OnCreateWorkspace = () => {
+    const docId = Date.now();
+  };
+
   return (
     <div className="p-10 md:px-36 lg:px-64 xl:px-96 py-28">
       <div className="shadow-2xl rounded-xl">
