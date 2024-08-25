@@ -8,6 +8,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import CoverOption from "../_shared/CoverOption";
+import Image from "next/image";
 
 function CoverPicker({ children }) {
   return (
@@ -15,10 +17,15 @@ function CoverPicker({ children }) {
       <DialogTrigger className="w-full">{children}</DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Are you absolutely sure?</DialogTitle>
+          <DialogTitle>Change Cover Image</DialogTitle>
           <DialogDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
+            <div>
+              {CoverOption.map((cover, index) => (
+                <div>
+                  <Image src={cover?.imageUrl} width={200} height={140} />
+                </div>
+              ))}
+            </div>
           </DialogDescription>
         </DialogHeader>
       </DialogContent>
