@@ -1,4 +1,5 @@
-"use client";
+"use client"; // Add this directive at the top of the file
+
 import CoverPicker from "@/app/_components/CoverPicker";
 import EmojiPickerComponent from "@/app/_components/EmojiPickerComponent";
 import { Button } from "@/components/ui/button";
@@ -54,9 +55,9 @@ function CreateWorkspace() {
           </div>
         </CoverPicker>
 
-        {/*Input Section */}
+        {/* Input Section */}
         <div className="p-12">
-          <h2 className="font-medium text-xl">Create a new Workspace </h2>
+          <h2 className="font-medium text-xl">Create a new Workspace</h2>
           <h2 className="text-lg mt-2 text-gray-700">
             <span className="font-medium">Synnex</span> lets you create a shared
             space to collaborate with your team.
