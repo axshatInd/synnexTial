@@ -13,7 +13,7 @@ import Image from "next/image";
 import { DialogClose } from "@radix-ui/react-dialog";
 import { Button } from "@/components/ui/button";
 
-function CoverPicker({ children }) {
+function CoverPicker({ children, setNewCover }) {
   const [selectedCover, setSelectedCover] = useState();
 
   return (
@@ -48,7 +48,9 @@ function CoverPicker({ children }) {
         </DialogHeader>
         <DialogFooter className="">
           <DialogClose asChild>
-            <Button type="button">Update</Button>
+            <Button type="button" onClick={() => setNewCover(selectedCover)}>
+              Update
+            </Button>
           </DialogClose>
 
           <DialogClose asChild>

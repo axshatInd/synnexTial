@@ -13,7 +13,7 @@ function CreateWorkspace() {
   return (
     <div className="p-10 md:px-36 lg:px-64 xl:px-96 py-28">
       <div className="shadow-2xl rounded-xl">
-        <CoverPicker>
+        <CoverPicker setNewCover={(v) => setCoverImage(v)}>
           {/* Cover Image */}
           <div className="relative group cursor-pointer">
             <h2 className="hidden absolute p-4 w-full h-full items-center group-hover:flex justify-center text-black">
