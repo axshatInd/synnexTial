@@ -1,5 +1,6 @@
 "use client";
 import CoverPicker from "@/app/_components/CoverPicker";
+import EmojiPickerComponent from "@/app/_components/EmojiPickerComponent";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { SmilePlus } from "lucide-react";
