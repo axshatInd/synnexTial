@@ -16,6 +16,9 @@ function EmojiPickerComponent({ children, setEmojiIcon }) {
             onEmojiClick={(e) => {
               setEmojiIcon(e.emoji);
               setOpenEmojiPicker(false);
+              {
+                /* will now setup firebase backend */
+              }
             }}
           />
         </div>
