@@ -1,11 +1,25 @@
 import EmojiPicker from "emoji-picker-react";
-import React from "react";
+import React, { useState } from "react";
 
-function EmojiPickerComponent({ children }) {
+function EmojiPickerComponent({ children, setEmojiIcon }) {
+  const [openEmojiPicker, setOpenEmojiPicker] = useState(false);
+
   return (
     <div>
-      <div>{children}</div>
-      <EmojiPicker />
+      {/* Button to open the EmojiPicker */}
+      <div onClick={() => setOpenEmojiPicker(true)}>{children}</div>
+
+      {/* Conditional rendering for the EmojiPicker */}
+      {openEmojiPicker && (
+        <div className="absolute z-10">
+          <EmojiPicker
+            onEmojiClick={(e) => {
+              setEmojiIcon(e.emoji);
+              setOpenEmojiPicker(false);
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 }
