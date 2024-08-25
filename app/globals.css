@@ -58,6 +58,10 @@
     --chart-5: 340 75% 55%;
   }
 
+  footer p {
+    transition: color 0.3s ease;
+  }
+
   .gradient-text {
     background: linear-gradient(to right, #f59e0b, #f97316, #b45309);
     -webkit-background-clip: text;
