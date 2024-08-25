@@ -1,9 +1,10 @@
 import EmojiPicker from "emoji-picker-react";
 import React from "react";
 
-function EmojiPickerComponent() {
+function EmojiPickerComponent({ children }) {
   return (
     <div>
+      <div>{children}</div>
       <EmojiPicker />
     </div>
   );
