@@ -9,7 +9,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-function CoverPicker() {
+function CoverPicker(chilren) {
   return (
     <Dialog>
       <DialogTrigger>Open</DialogTrigger>
