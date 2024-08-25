@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { db } from "@/config/firebaseConfig";
 import { useAuth, useUser } from "@clerk/nextjs";
 import { doc, setDoc } from "firebase/firestore";
-import { SmilePlus } from "lucide-react";
+import { Loader2Icon, SmilePlus } from "lucide-react";
 import Image from "next/image";
 import React, { useState } from "react";
 
@@ -72,7 +72,12 @@ function CreateWorkspace() {
             />
           </div>
           <div className="mt-7 flex justify-end gap-6">
-            <Button disabled={!workspacename?.length}>Create</Button>
+            <Button
+              disabled={!workspacename?.length || loading}
+              onClick={OnCreateWorkspace}
+            >
+              Create {loading && <Loader2Icon className="animate-spin ml-2" />}
+            </Button>
             <Button variant="outline">Cancel</Button>
           </div>
         </div>
