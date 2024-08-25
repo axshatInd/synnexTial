@@ -39,9 +39,11 @@ function CreateWorkspace() {
           </h2>
 
           <div className="mt-8 flex gap-2 items-center">
-            <Button variant="outline">
-              <SmilePlus />
-            </Button>
+            <EmojiPickerComponent>
+              <Button variant="outline">
+                <SmilePlus />
+              </Button>
+            </EmojiPickerComponent>
             <Input
               placeholder="Workspace Name"
               onChange={(e) => setWorkspaceName(e.target.value)}

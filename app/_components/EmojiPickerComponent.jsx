@@ -1,7 +1,12 @@
+import EmojiPicker from "emoji-picker-react";
 import React from "react";
 
 function EmojiPickerComponent() {
-  return <div>EmojiPickerComponent</div>;
+  return (
+    <div>
+      <EmojiPicker />
+    </div>
+  );
 }
 
 export default EmojiPickerComponent;
