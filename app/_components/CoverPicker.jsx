@@ -36,7 +36,11 @@ function CoverPicker({ children }) {
             </div>
           </DialogDescription>
         </DialogHeader>
-        <DialogFooter className="sm:justify-start">
+        <DialogFooter className="">
+          <DialogClose asChild>
+            <Button type="button">Update</Button>
+          </DialogClose>
+
           <DialogClose asChild>
             <Button type="button" variant="secondary">
               Close
