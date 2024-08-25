@@ -3,6 +3,9 @@ import CoverPicker from "@/app/_components/CoverPicker";
 import EmojiPickerComponent from "@/app/_components/EmojiPickerComponent";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { db } from "@/config/firebaseConfig";
+import { useAuth, useUser } from "@clerk/nextjs";
+import { doc, setDoc } from "firebase/firestore";
 import { SmilePlus } from "lucide-react";
 import Image from "next/image";
 import React, { useState } from "react";
@@ -11,9 +14,24 @@ function CreateWorkspace() {
   const [coverImage, setCoverImage] = useState("/cover.png");
   const [workspacename, setWorkspaceName] = useState();
   const [emoji, setEmoji] = useState();
+  const { user } = useUser();
+  const { orgId } = useAuth();
+  const [loading, setLoading] = useState(false);
 
-  const OnCreateWorkspace = () => {
+  /* Used to create new workspace and save the data in dataspace */
+  const OnCreateWorkspace = async () => {
+    setLoading(true);
     const docId = Date.now();
+    const result = await setDoc(doc(db, "Workspace", docId.toString()), {
+      workspaceName: workspacename,
+      emoji: emoji,
+      coverImage: coverImage,
+      createdBy: user?.primaryEmailAddress?.emailAddress,
+      id: docId,
+      orgId: orgId ? orgId : user?.primaryEmailAddress?.emailAddress,
+    });
+    setLoading(false);
+    console.log("Data Inserted");
   };
 
   return (
