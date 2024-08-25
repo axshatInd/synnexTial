@@ -19,10 +19,15 @@ function CoverPicker({ children }) {
         <DialogHeader>
           <DialogTitle>Change Cover Image</DialogTitle>
           <DialogDescription>
-            <div>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-3">
               {CoverOption.map((cover, index) => (
                 <div>
-                  <Image src={cover?.imageUrl} width={200} height={140} />
+                  <Image
+                    src={cover?.imageUrl}
+                    width={200}
+                    height={140}
+                    className="h-[70px] w-full rounded-md object-cover"
+                  />
                 </div>
               ))}
             </div>
