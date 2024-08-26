@@ -24,17 +24,19 @@ function CreateWorkspace() {
   /* Used to create new workspace and save the data in dataspace */
   const OnCreateWorkspace = async () => {
     setLoading(true);
-    const docId = Date.now();
-    const result = await setDoc(doc(db, "Workspace", docId.toString()), {
+    const workspaceId = Date.now();
+    const result = await setDoc(doc(db, "Workspace", workspaceId.toString()), {
       workspaceName: workspacename,
       emoji: emoji,
       coverImage: coverImage,
       createdBy: user?.primaryEmailAddress?.emailAddress,
-      id: docId,
+      id: workspaceId,
       orgId: orgId ? orgId : user?.primaryEmailAddress?.emailAddress,
     });
+    await setDoc(doc(db, "workspaceDocuments, "));
+
     setLoading(false);
-    router.replace("/workspace/" + docId);
+    router.replace("/workspace/" + workspaceId);
     {
       /* will do nested dynamic routing now at 1:58:00 of the vid */
     }
