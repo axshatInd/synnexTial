@@ -11,6 +11,7 @@ import { Loader2Icon, SmilePlus } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import uuid4 from "uuid4";
 
 function CreateWorkspace() {
   const [coverImage, setCoverImage] = useState("/cover.png");
@@ -33,7 +34,18 @@ function CreateWorkspace() {
       id: workspaceId,
       orgId: orgId ? orgId : user?.primaryEmailAddress?.emailAddress,
     });
-    await setDoc(doc(db, "workspaceDocuments, "));
+    const docId = uuid4();
+    {
+      /* this will give some random ids for us */
+    }
+    await setDoc(doc(db, "workspaceDocuments", docId.toString()), {
+      workspaceId: workspaceId,
+      createdBy: user?.primaryEmailAddress?.emailAddress,
+      coverImage: null,
+      emoji: null,
+      id: docId,
+      documentOutput: [],
+    });
 
     setLoading(false);
     router.replace("/workspace/" + workspaceId);
