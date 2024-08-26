@@ -9,6 +9,7 @@ import { useAuth, useUser } from "@clerk/nextjs";
 import { doc, setDoc } from "firebase/firestore";
 import { Loader2Icon, SmilePlus } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 function CreateWorkspace() {
@@ -18,6 +19,7 @@ function CreateWorkspace() {
   const { user } = useUser();
   const { orgId } = useAuth();
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   /* Used to create new workspace and save the data in dataspace */
   const OnCreateWorkspace = async () => {
@@ -32,7 +34,7 @@ function CreateWorkspace() {
       orgId: orgId ? orgId : user?.primaryEmailAddress?.emailAddress,
     });
     setLoading(false);
-    console.log("Data Inserted");
+    router.replace("/workspace" + docId);
   };
 
   return (
