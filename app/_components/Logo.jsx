@@ -12,7 +12,7 @@ function Logo() {
         className={`${dancing_script.className} font-semibold text-2xl gradient-text2`}
       >
         {/* empty for now */}
-        nex
+        Nex
       </h2>
     </div>
   );
