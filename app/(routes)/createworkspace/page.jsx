@@ -34,7 +34,7 @@ function CreateWorkspace() {
       orgId: orgId ? orgId : user?.primaryEmailAddress?.emailAddress,
     });
     setLoading(false);
-    router.replace("/workspace" + docId);
+    router.replace("/workspace/" + docId);
   };
 
   return (
