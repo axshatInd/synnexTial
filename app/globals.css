@@ -113,3 +113,36 @@
     @apply text-accent-foreground bg-accent hover:bg-accent-foreground px-4 py-2 rounded-md transition-all;
   }
 }
+
+/* Scoped styling for ThemeSwitcher component */
+
+.theme-switcher-button {
+  /* Ensures button is circular */
+  border-radius: 50%;
+  width: 2.5rem; /* Adjust size as needed */
+  height: 2.5rem; /* Adjust size as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: #f3f4f6; /* Light background for light mode */
+  transition: background-color 0.3s ease;
+}
+
+.theme-switcher-button:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* Light hover effect */
+}
+
+.dark .theme-switcher-button {
+  background-color: #1f2937; /* Dark background for dark mode */
+}
+
+.dark .theme-switcher-button:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Dark mode hover effect */
+}
+
+/* Styling for icons */
+.theme-switcher-button svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}

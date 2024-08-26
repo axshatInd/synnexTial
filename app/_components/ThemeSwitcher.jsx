@@ -1,12 +1,17 @@
-import React from "react";
+import { SunIcon, MoonIcon } from "@heroicons/react/24/solid"; // Import Heroicons
 
 const ThemeSwitcher = ({ isDark, onChange }) => {
   return (
     <button
       onClick={onChange}
-      className="px-4 py-2 bg-secondary-foreground text-secondary rounded-md"
+      aria-label={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+      className="theme-switcher-button"
     >
-      {isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+      {isDark ? (
+        <MoonIcon className="w-6 h-6 text-yellow-400" />
+      ) : (
+        <SunIcon className="w-6 h-6 text-yellow-500" />
+      )}
     </button>
   );
 };
