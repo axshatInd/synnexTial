@@ -35,6 +35,9 @@ function CreateWorkspace() {
     });
     setLoading(false);
     router.replace("/workspace/" + docId);
+    {
+      /* will do nested dynamic routing now at 1:58:00 of the vid */
+    }
   };
 
   return (
