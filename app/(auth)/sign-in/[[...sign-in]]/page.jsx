@@ -12,8 +12,8 @@ export default function Page() {
           />
 
           <div className="hidden lg:relative lg:block lg:p-12">
-            <h2 className="mt-6 text-2xl font-bold text-black sm:text-3xl md:text-4xl">
-              &copy; Synnex
+            <h2 className="mt-6 text-md text-black sm:text-lg md:text-xl">
+              &copy; Synnextial
             </h2>
 
             <p className="mt-4 leading-relaxed text-black/90">

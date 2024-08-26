@@ -9,7 +9,7 @@ const outfit = Outfit({ subsets: ["latin"] });
 const dancing_script = Dancing_Script({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "synnex",
+  title: "synnexTial",
   description: "CollabFreely",
 };
 

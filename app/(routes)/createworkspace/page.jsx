@@ -64,8 +64,8 @@ function CreateWorkspace() {
         <div className="p-12">
           <h2 className="font-medium text-xl">Create a new Workspace</h2>
           <h2 className="text-lg mt-2 text-gray-700">
-            <span className="font-medium">Synnex</span> lets you create a shared
-            space to collaborate with your team.
+            <span className="font-medium">Synnextial</span> lets you create a
+            shared space to collaborate with your team.
           </h2>
 
           <div className="mt-8 flex gap-2 items-center">
