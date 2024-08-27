@@ -5,16 +5,23 @@ import { AlignLeft, LayoutGrid } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
+import useTheme from "@/app/_components/useTheme"; // Import useTheme to get the current theme
 
 function WorkspaceList() {
   const { user } = useUser();
   const [WorkspaceList, setWorkspaceList] = useState([]);
+  const { theme } = useTheme(); // Get the current theme
+  const isDarkMode = theme === "dark"; // Check if the current theme is dark mode
 
   return (
     <div className="min-h-screen flex flex-col px-4 sm:px-6 md:px-8 lg:px-10 xl:px-10 py-4 border border-gray-300 shadow-lg rounded-lg max-w-6xl mx-auto">
       {/* Header */}
       <div className="flex justify-between items-center mb-8">
-        <h2 className="font-semibold text-xl gradient-text3">
+        <h2
+          className={`font-semibold text-xl ${
+            isDarkMode ? "gradient-text-dark" : "gradient-text"
+          }`}
+        >
           Hello, {user?.username}!
         </h2>
         <Link href={"/createworkspace"}>

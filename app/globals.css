@@ -59,8 +59,17 @@
   }
 
   /* Gradient Text Styles */
+  /* Existing gradient-text for light mode */
   .gradient-text {
     background: linear-gradient(to right, #f59e0b, #f97316, #b45309);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Gradient text styling for dark mode */
+  .dark .gradient-text-dark {
+    background: linear-gradient(to right, #fca5a5, #f87171, #ef4444);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;

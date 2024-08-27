@@ -4,7 +4,7 @@ import { gsap } from "gsap";
 import Logo from "@/app/_components/Logo";
 import { OrganizationSwitcher, useAuth, UserButton } from "@clerk/nextjs";
 import ThemeSwitcher from "@/app/_components/ThemeSwitcher";
-import useTheme from "@/app/_components/useTheme"; // Import useTheme here
+import useTheme from "@/app/_components/useTheme";
 
 function Header() {
   const { orgId } = useAuth();
@@ -17,13 +17,17 @@ function Header() {
 
   const { theme, toggleTheme } = useTheme();
 
+  // Determine if the header should be light or dark based on the page theme
+  const isDarkMode = theme === "dark";
+  const headerBackground = isDarkMode ? "bg-white" : "bg-dark-600";
+
   return (
     <header
-      ref={headerRef} // Reference for animation
-      className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-4 py-3 md:px-6 md:py-4 lg:px-8 lg:py-5 shadow-xl rounded-b-lg max-w-8xl mx-auto bg-white"
+      ref={headerRef}
+      className={`fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-4 py-3 md:px-6 md:py-4 lg:px-8 lg:py-5 shadow-xl rounded-b-lg max-w-8xl mx-auto ${headerBackground}`}
     >
       <Logo />
-      <ThemeSwitcher isDark={theme === "dark"} onChange={toggleTheme} />
+      <ThemeSwitcher isDark={isDarkMode} onChange={toggleTheme} />
       <OrganizationSwitcher
         afterCreateOrganizationUrl={"/dashboard"}
         afterLeaveOrganizationUrl={"/dashboard"}
