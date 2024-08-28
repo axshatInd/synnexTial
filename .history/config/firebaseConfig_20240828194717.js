@@ -1,8 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN,
@@ -13,13 +11,11 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID,
 };
 
-let app, db, analytics;
+let app, db;
 
 if (typeof window !== "undefined") {
-  // Initialize Firebase only on the client side
   app = initializeApp(firebaseConfig);
   db = getFirestore(app);
-  analytics = getAnalytics(app);
 }
 
-export { app, db, analytics };
+export { app, db };
