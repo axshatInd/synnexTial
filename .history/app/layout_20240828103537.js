@@ -4,7 +4,6 @@ import { Dancing_Script } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Header from "./(routes)/dashboard/_components/Header";
-import ThemeSwitcher from "./_components/ThemeSwitcher"; // Import ThemeSwitcher
 import useTheme from "./_components/useTheme";
 
 // Font configurations
@@ -27,7 +26,7 @@ function Footer() {
 }
 
 export default function RootLayout({ children }) {
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
 
   return (
     <ClerkProvider>
@@ -38,9 +37,6 @@ export default function RootLayout({ children }) {
           <Header />
           <main className="flex-grow pt-20">{children}</main>
           <Footer />
-          <div className="fixed bottom-4 right-4 z-50">
-            <ThemeSwitcher isDark={theme === "dark"} onChange={toggleTheme} />
-          </div>
         </body>
       </html>
     </ClerkProvider>
