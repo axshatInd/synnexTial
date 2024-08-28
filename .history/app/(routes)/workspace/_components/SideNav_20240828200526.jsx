@@ -6,7 +6,6 @@ import { Bell } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { collection, doc, onSnapshot, query, where } from "firebase/firestore";
 import { db } from "@/config/firebaseConfig";
-import DocumentList from "./DocumentList";
 
 function SideNav({ params }) {
   const [documentList, setDocumentList] = useState([]);
@@ -25,7 +24,7 @@ function SideNav({ params }) {
     );
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        setDocumentList((documentList) => [...documentList, doc.data()]);
+        console.log(doc.data());
       });
     });
   };
@@ -74,8 +73,6 @@ function SideNav({ params }) {
           +
         </Button>
       </div>
-      {/* Document List */}
-      <DocumentList documentList={documentList} />
     </div>
   );
 }

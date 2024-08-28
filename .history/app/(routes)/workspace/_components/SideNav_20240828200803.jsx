@@ -75,7 +75,7 @@ function SideNav({ params }) {
         </Button>
       </div>
       {/* Document List */}
-      <DocumentList documentList={documentList} />
+      <DocumentList />
     </div>
   );
 }
