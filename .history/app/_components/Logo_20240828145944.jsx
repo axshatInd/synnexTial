@@ -9,7 +9,7 @@ function Logo() {
     <div className="flex items-center gap-1">
       <Image src={"/logo2.svg"} alt="Logo" width={30} height={30} />
       <h2
-        className={`${dancing_script.className} font-semibold text-2xl gradient-text4`}
+        className={`${dancing_script.className} font-semibold text-2xl gradient-text2`}
       >
         {/* empty for now */}
         Nex
