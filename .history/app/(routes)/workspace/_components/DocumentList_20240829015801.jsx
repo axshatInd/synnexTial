@@ -15,7 +15,7 @@ function DocumentList({ documentList }) {
   }, [documentList]);
 
   if (!documentList || documentList.length === 0) {
-    return <div>.....</div>;
+    return <div className="justify-between items-center">.....</div>;
   }
 
   return (
