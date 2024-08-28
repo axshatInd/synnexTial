@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import { Satisfy } from "next/font/google";
