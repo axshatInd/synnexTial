@@ -5,12 +5,12 @@ function WorkspaceDocument() {
   return (
     <div>
       {/* div for Side Nav below */}
-      <div className="md:w-72 hidden">
+      <div>
         <SideNav />
       </div>
 
       {/* div for DOcument below */}
-      <div className="md: ml-72">Document</div>
+      <div></div>
     </div>
   );
 }

@@ -10,7 +10,7 @@ function WorkspaceDocument() {
       </div>
 
       {/* div for DOcument below */}
-      <div className="md: ml-72">Document</div>
+      <div></div>
     </div>
   );
 }
