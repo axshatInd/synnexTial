@@ -19,7 +19,7 @@ function Header() {
   return (
     <header
       ref={headerRef} // Reference for animation
-      className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 flex justify-between items-center px-4 py-2 md:px-6 md:py-3 shadow-xl rounded-full bg-white w-full max-w-7xl overflow-hidden ${
+      className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 flex justify-between items-center px-4 py-2 md:px-6 md:py-3 shadow-3xl rounded-full bg-white w-full max-w-7xl overflow-hidden ${
         theme === "dark" ? "dark:bg-black" : ""
       }`}
     >
