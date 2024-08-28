@@ -24,7 +24,7 @@ function DocumentList({ documentList }) {
         <div
           key={index}
           ref={(el) => (itemsRef.current[index] = el)}
-          className="flex items-center mb-4 mt-2 ml-6"
+          className="flex items-center mb-4 mt-2 ml-4"
         >
           <Image
             src={"/document.svg"}
