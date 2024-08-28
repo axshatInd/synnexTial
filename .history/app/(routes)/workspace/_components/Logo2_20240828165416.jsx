@@ -9,7 +9,7 @@ function Logo2() {
     <div className="flex items-center gap-1 px-0.20rem">
       <Image src={"/logo.svg"} alt="Logo" width={40} height={40} />
       <h2
-        className={`${dancing_script.className} font-semibold text-2xl gradient-text`}
+        className={`${dancing_script.className} font-semibold text-2xl gradient-text2`}
       >
         {/* empty for now */}
         Synnex

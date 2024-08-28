@@ -8,7 +8,7 @@ function SideNav() {
       <div className="flex justify-between items-center p-4">
         <Logo2 />
         <div className="relative">
-          <Bell className="h-8 w-8 p-2 rounded-full bg-gray-200 dark:bg-white text-gray-800 dark:text-black shadow-md" />
+          <Bell className="h-8 w-8 p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white shadow-md" />
         </div>
       </div>
       <hr className=" mt-0.20rem mb-0.10rem" />
