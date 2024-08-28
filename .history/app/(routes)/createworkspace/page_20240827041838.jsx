@@ -47,11 +47,6 @@ function CreateWorkspace() {
       documentOutput: [],
     });
 
-    await setDoc(doc(db, "documentOutput", docId.toString()), {
-      docId: docId,
-      Output: [],
-    });
-
     setLoading(false);
     router.replace("/workspace/" + workspaceId + "/" + docId);
     {
