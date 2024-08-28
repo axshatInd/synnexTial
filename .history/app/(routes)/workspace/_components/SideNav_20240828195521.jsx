@@ -22,7 +22,7 @@ function SideNav({ params }) {
     );
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        console.log(doc.data());
+        console.log(doc.name());
       });
     });
   };
