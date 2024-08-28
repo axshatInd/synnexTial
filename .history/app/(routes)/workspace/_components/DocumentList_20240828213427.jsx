@@ -9,7 +9,7 @@ function DocumentList({ documentList }) {
 
   return (
     <div>
-      {documentList.map((doc, index) => (
+      {documentList?.map((doc, index) => (
         <div key={index} className="flex items-center mb-4">
           <Image
             src={"/document.svg"}

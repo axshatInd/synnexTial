@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from "react";
 
 function DocumentList({ documentList }) {
+  console.log("DocumentList prop:", documentList); // Log to check
   if (!documentList || documentList.length === 0) {
     return <div>No documents found.</div>;
   }
@@ -23,5 +24,3 @@ function DocumentList({ documentList }) {
     </div>
   );
 }
-
-export default DocumentList;
