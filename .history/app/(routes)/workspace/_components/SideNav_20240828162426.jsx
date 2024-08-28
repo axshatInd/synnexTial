@@ -4,7 +4,7 @@ import { Bell } from "lucide-react";
 
 function SideNav() {
   return (
-    <div className="h-screen md:w-72 hidden md:block fixed bg-slate-50 dark:bg-slate-900 rounded-xl z-40 shadow-2xl">
+    <div className="h-screen md:w-72 hidden md:block fixed bg-slate-50 dark:bg-slate-900 rounded-xl z-40 shadow-xl">
       <div className="flex justify-between items-center p-4">
         <Logo2 />
         <div className="relative">
