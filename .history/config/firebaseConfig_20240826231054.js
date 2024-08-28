@@ -1,6 +1,6 @@
 // config/firebaseConfig.js
 
-import { initializeApp, getApps, getApp } from "firebase/app";
+import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 
@@ -18,19 +18,10 @@ const firebaseConfig = {
 let app, db, analytics;
 
 if (typeof window !== "undefined") {
-  // Check if Firebase has been initialized
-  if (!getApps().length) {
-    app = initializeApp(firebaseConfig);
-  } else {
-    app = getApp();
-  }
-
+  // Initialize Firebase only on the client side
+  app = initializeApp(firebaseConfig);
   db = getFirestore(app);
-
-  // Initialize analytics only if the measurementId exists
-  if (firebaseConfig.measurementId) {
-    analytics = getAnalytics(app);
-  }
+  analytics = getAnalytics(app);
 }
 
 export { app, db, analytics };
