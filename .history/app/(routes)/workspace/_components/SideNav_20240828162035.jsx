@@ -11,7 +11,7 @@ function SideNav() {
           <Bell className="h-8 w-8 p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 shadow-md" />
         </div>
       </div>
-      <hr className=" mt-0.20rem mb-0.10rem" />
+      <hr className=" mt-0.20rem mb-0.20rem" />
     </div>
   );
 }
