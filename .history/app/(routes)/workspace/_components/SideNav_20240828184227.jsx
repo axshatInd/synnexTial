@@ -4,26 +4,14 @@ import gsap from "gsap";
 import Logo2 from "./Logo2";
 import { Bell } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { collection, doc, onSnapshot, QuerySnapshot } from "firebase/firestore";
+import { collection } from "firebase/firestore";
 
 function SideNav({ params }) {
-  useEffect(() => {
-    params && GetDocumentList();
-  }, [params]);
-
-  {
-    /* used to get document list */
-  }
   const GetDocumentList = () => {
     const q = query(
       collection(db, "workspaceDocuments"),
       where("workspaceId", "==", params?.workspaceId)
     );
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        console.log(doc.data());
-      });
-    });
   };
 
   const sideNavRef = useRef(null);

@@ -10,10 +10,6 @@ function SideNav({ params }) {
   useEffect(() => {
     params && GetDocumentList();
   }, [params]);
-
-  {
-    /* used to get document list */
-  }
   const GetDocumentList = () => {
     const q = query(
       collection(db, "workspaceDocuments"),
