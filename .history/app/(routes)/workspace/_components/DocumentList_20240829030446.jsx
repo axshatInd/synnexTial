@@ -24,17 +24,14 @@ function DocumentList({ documentList }) {
         <div
           key={index}
           ref={(el) => (itemsRef.current[index] = el)}
-          className="flex items-center mb-4 mt-2 ml-6 cursor-pointer"
+          className="flex items-center mb-4 mt-2 ml-6"
         >
-          {" "}
-          {!doc.emoji && (
-            <Image
-              src={"/document.svg"}
-              width={20}
-              height={20}
-              alt="Document Icon"
-            />
-          )}
+          <Image
+            src={"/document.svg"}
+            width={20}
+            height={20}
+            alt="Document Icon"
+          />
           <h2 className="ml-2 text-sm">
             {doc?.emoji}
             {doc.documentName}
