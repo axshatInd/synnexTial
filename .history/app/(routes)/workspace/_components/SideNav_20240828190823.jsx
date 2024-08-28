@@ -61,7 +61,7 @@ function SideNav({ params }) {
   return (
     <div
       ref={sideNavRef} // Reference for GSAP
-      className="h-screen md:w-72 hidden md:block fixed bg-slate-50 dark:bg-black rounded-3xl z-50 shadow-2xl mt-2 md:mt-4"
+      className="h-screen md:w-72 hidden md:block fixed bg-slate-50 dark:bg-black rounded-3xl z-40 shadow-2xl"
     >
       <div className="flex justify-between items-center p-4">
         <div ref={logoRef}>

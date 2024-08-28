@@ -4,24 +4,15 @@ import gsap from "gsap";
 import Logo2 from "./Logo2";
 import { Bell } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  collection,
-  doc,
-  onSnapshot,
-  query,
-  setDoc,
-  where,
-} from "firebase/firestore";
-import { db } from "@/config/firebaseConfig";
+import { db } from "@/config/firebaseConfig"; // Ensure db is imported
+import { collection, doc, onSnapshot, query, where } from "firebase/firestore"; // Import query and where
 
 function SideNav({ params }) {
   useEffect(() => {
     params && GetDocumentList();
   }, [params]);
 
-  {
-    /* used to get document list */
-  }
+  /* Used to get document list */
   const GetDocumentList = () => {
     const q = query(
       collection(db, "workspaceDocuments"),
@@ -32,6 +23,8 @@ function SideNav({ params }) {
         console.log(doc.data());
       });
     });
+
+    return () => unsubscribe(); // Clean up the subscription on component unmount
   };
 
   const sideNavRef = useRef(null);
@@ -61,7 +54,7 @@ function SideNav({ params }) {
   return (
     <div
       ref={sideNavRef} // Reference for GSAP
-      className="h-screen md:w-72 hidden md:block fixed bg-slate-50 dark:bg-black rounded-3xl z-50 shadow-2xl mt-2 md:mt-4"
+      className="h-screen md:w-72 hidden md:block fixed bg-slate-50 dark:bg-black rounded-3xl z-40 shadow-2xl"
     >
       <div className="flex justify-between items-center p-4">
         <div ref={logoRef}>
