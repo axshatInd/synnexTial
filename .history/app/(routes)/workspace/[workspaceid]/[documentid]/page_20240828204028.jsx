@@ -4,7 +4,7 @@ import React from "react";
 import SideNav from "../../_components/SideNav";
 
 function WorkspaceDocument({ params }) {
-  // console.log("WorkspaceDocument params:", params);
+  console.log("WorkspaceDocument params:", params);
 
   return (
     <div>
