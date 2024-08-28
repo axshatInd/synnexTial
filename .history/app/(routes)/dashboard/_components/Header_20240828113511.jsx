@@ -20,7 +20,7 @@ function Header() {
   return (
     <header
       ref={headerRef} // Reference for animation
-      className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-4 py-2 md:px-6 md:py-3 shadow-xl rounded-b-lg max-w-8xl mx-auto bg-white"
+      className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-4 py-2 md:px-6 md:py-3 lg:py-3 shadow-xl rounded-b-lg max-w-8xl mx-auto bg-white"
     >
       <Logo />
       <ThemeSwitcher isDark={theme === "dark"} onChange={toggleTheme} />
