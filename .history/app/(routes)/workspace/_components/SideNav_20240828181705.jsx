@@ -44,11 +44,9 @@ function SideNav() {
         </div>
       </div>
       <hr className=" mt-0.20rem mb-0.10rem" />
-      <div className="p-4 flex items-center justify-between">
+      <div>
         <h2 className="font-medium">Workspace Name</h2>
-        <Button size="sm" className="text-lg py-0.5 rounded-full">
-          +
-        </Button>
+        <Button size="sm">+</Button>
       </div>
     </div>
   );
