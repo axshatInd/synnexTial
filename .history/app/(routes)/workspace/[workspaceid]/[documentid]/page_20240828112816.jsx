@@ -5,7 +5,7 @@ function WorkspaceDocument() {
   return (
     <div>
       {/* div for Side Nav below */}
-      <div className="">
+      <div className="md:w-72 hidden">
         <SideNav />
       </div>
 
