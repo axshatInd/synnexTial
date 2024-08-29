@@ -1,4 +1,4 @@
-import { MoreVertical } from "lucide-react";
+import { Link2Icon, MoreVertical } from "lucide-react";
 import React from "react";
 import {
   DropdownMenu,
@@ -17,12 +17,12 @@ function DocumentOptions() {
           <MoreVertical className="h-3 w-3" />
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuLabel>My Account</DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>Profile</DropdownMenuItem>
-          <DropdownMenuItem>Billing</DropdownMenuItem>
-          <DropdownMenuItem>Team</DropdownMenuItem>
-          <DropdownMenuItem>Subscription</DropdownMenuItem>
+          <DropdownMenuItem>
+            {" "}
+            <Link2Icon className="h-3 w-3 mr-1" /> Share Link
+          </DropdownMenuItem>
+          <DropdownMenuItem>Rename</DropdownMenuItem>
+          <DropdownMenuItem>Delete</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>

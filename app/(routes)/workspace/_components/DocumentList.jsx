@@ -10,11 +10,17 @@ function DocumentList({ documentList, params }) {
   const itemsRef = useRef([]);
 
   useEffect(() => {
-    gsap.fromTo(
-      itemsRef.current,
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, stagger: 0.1, duration: 0.5 }
-    );
+    // Check if itemsRef.current has valid elements before applying GSAP animations
+    if (
+      itemsRef.current.length > 0 &&
+      itemsRef.current.every((el) => el !== null)
+    ) {
+      gsap.fromTo(
+        itemsRef.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, stagger: 0.1, duration: 0.5 }
+      );
+    }
   }, [documentList]);
 
   if (!documentList || documentList.length === 0) {
@@ -64,8 +70,6 @@ function DocumentList({ documentList, params }) {
             </h2>
           </div>
           <div className="mr-1">
-            {" "}
-            {/* Adjust margin to position the icon */}
             <DocumentOptions />
           </div>
         </div>
