@@ -2,8 +2,10 @@
 import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { useRouter } from "next/navigation";
 
 function DocumentList({ documentList, params }) {
+  const router = useRouter();
   const itemsRef = useRef([]);
 
   useEffect(() => {
@@ -23,6 +25,9 @@ function DocumentList({ documentList, params }) {
       {documentList.map((doc, index) => (
         <div
           key={index}
+          onClick={() =>
+            router.push("/workspace/" + params?.workspaceId + "/" + doc?.id)
+          }
           ref={(el) => (itemsRef.current[index] = el)}
           className={`group flex items-center mb-4 mt-2 ml-6 py-1 px-2 rounded-2xl mr-4 cursor-pointer ${
             doc?.id == params?.documentid
