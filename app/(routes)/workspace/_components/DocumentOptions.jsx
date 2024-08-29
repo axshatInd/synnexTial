@@ -26,7 +26,7 @@ function DocumentOptions() {
             Rename
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <Trash2Icon className="h-3 w-3 mr-2" />
+            <Trash2Icon className="h-3 w-3 mr-2 text-red-500" />
             Delete
           </DropdownMenuItem>
         </DropdownMenuContent>
