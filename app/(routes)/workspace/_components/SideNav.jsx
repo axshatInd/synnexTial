@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import Logo2 from "./Logo2";
-import { Bell } from "lucide-react";
+import { Bell, Loader2Icon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   collection,
@@ -16,10 +16,13 @@ import { db } from "@/config/firebaseConfig";
 import DocumentList from "./DocumentList";
 import uuid4 from "uuid4";
 import { useUser } from "@clerk/nextjs";
+import { useRouter } from "next/router";
 
 function SideNav({ params }) {
   const [documentList, setDocumentList] = useState([]);
   const { user } = useUser();
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     params && GetDocumentList();
@@ -68,9 +71,10 @@ function SideNav({ params }) {
     /* Create New Document */
   }
   const CreateNewDocument = async () => {
+    setLoading(true);
     const docId = uuid4();
     await setDoc(doc(db, "workspaceDocuments", docId.toString()), {
-      workspaceId: Number(workspaceId),
+      workspaceId: Number(params?.workspaceId),
       createdBy: user?.primaryEmailAddress?.emailAddress,
       coverImage: null,
       emoji: null,
@@ -80,7 +84,7 @@ function SideNav({ params }) {
     });
 
     setLoading(false);
-    router.replace("/workspace/" + workspaceId + "/" + docId);
+    router.replace("/workspace/" + params?.workspaceId + "/" + docId);
   };
 
   return (
@@ -99,8 +103,12 @@ function SideNav({ params }) {
       <hr className=" mt-0.20rem mb-0.10rem" />
       <div className="p-4 flex items-center justify-between">
         <h2 className="font-medium">SynDocs</h2>
-        <Button size="sm" className="text-lg py-0.5 rounded-full">
-          +
+        <Button
+          size="sm"
+          onClick={CreateNewDocument}
+          className="text-lg py-0.5 rounded-full"
+        >
+          {loading ? <Loader2Icon className="h-3 w-3 animate-spin" /> : "+"}+
         </Button>
       </div>
       {/* Document List */}
