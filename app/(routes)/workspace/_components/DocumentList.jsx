@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 
-function DocumentList({ documentList }) {
+function DocumentList({ documentList, params }) {
   const itemsRef = useRef([]);
 
   useEffect(() => {
@@ -24,7 +24,9 @@ function DocumentList({ documentList }) {
         <div
           key={index}
           ref={(el) => (itemsRef.current[index] = el)}
-          className="group flex items-center mb-4 mt-2 ml-6 py-1 px-2 hover:bg-black rounded-2xl mr-4 cursor-pointer dark:hover:bg-gray-50"
+          className={`group flex items-center mb-4 mt-2 ml-6 py-1 px-2 hover:bg-black rounded-2xl mr-4 cursor-pointer dark:hover:bg-gray-50 ${
+            doc?.id == params?.documentid ? "bg-teal" : ""
+          }`}
         >
           {!doc.emoji && (
             <Image
