@@ -30,38 +30,44 @@ function DocumentList({ documentList, params }) {
             router.push("/workspace/" + params?.workspaceId + "/" + doc?.id)
           }
           ref={(el) => (itemsRef.current[index] = el)}
-          className={`group flex items-center mb-4 mt-2 ml-6 py-1 px-2 rounded-2xl mr-4 cursor-pointer ${
+          className={`group flex items-center justify-between mb-4 mt-2 ml-6 py-1 px-2 rounded-2xl mr-4 cursor-pointer ${
             doc?.id == params?.documentid
               ? "bg-yellow-200 dark:bg-yellow-600"
               : "hover:bg-black dark:hover:bg-gray-50"
           }`}
         >
-          {!doc.emoji && (
-            <Image
-              src={"/document.svg"}
-              width={20}
-              height={20}
-              alt="Document Icon"
-              className="transition-colors duration-300 group-hover:text-white dark:group-hover:text-black"
-              style={{
-                filter:
-                  doc?.id == params?.documentid
-                    ? "invert(0)"
-                    : "invert(0) brightness(1)",
-              }}
-            />
-          )}
-          <h2
-            className={`ml-2 text-sm ${
-              doc?.id == params?.documentid
-                ? "text-black dark:text-white"
-                : "text-black group-hover:text-white dark:text-white dark:group-hover:text-black"
-            }`}
-          >
-            {doc?.emoji}
-            {doc.documentName}
-          </h2>
-          <DocumentOptions />
+          <div className="flex items-center">
+            {!doc.emoji && (
+              <Image
+                src={"/document.svg"}
+                width={20}
+                height={20}
+                alt="Document Icon"
+                className="transition-colors duration-300 group-hover:text-white dark:group-hover:text-black"
+                style={{
+                  filter:
+                    doc?.id == params?.documentid
+                      ? "invert(0)"
+                      : "invert(0) brightness(1)",
+                }}
+              />
+            )}
+            <h2
+              className={`ml-2 text-sm ${
+                doc?.id == params?.documentid
+                  ? "text-black dark:text-white"
+                  : "text-black group-hover:text-white dark:text-white dark:group-hover:text-black"
+              }`}
+            >
+              {doc?.emoji}
+              {doc.documentName}
+            </h2>
+          </div>
+          <div className="mr-1">
+            {" "}
+            {/* Adjust margin to position the icon */}
+            <DocumentOptions />
+          </div>
         </div>
       ))}
     </div>
