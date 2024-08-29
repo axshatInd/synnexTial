@@ -3,6 +3,7 @@ import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { useRouter } from "next/navigation";
+import DocumentOptions from "./DocumentOptions";
 
 function DocumentList({ documentList, params }) {
   const router = useRouter();
@@ -60,6 +61,7 @@ function DocumentList({ documentList, params }) {
             {doc?.emoji}
             {doc.documentName}
           </h2>
+          <DocumentOptions />
         </div>
       ))}
     </div>
