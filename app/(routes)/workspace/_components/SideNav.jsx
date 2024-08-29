@@ -4,12 +4,22 @@ import gsap from "gsap";
 import Logo2 from "./Logo2";
 import { Bell } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { collection, doc, onSnapshot, query, where } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  onSnapshot,
+  query,
+  setDoc,
+  where,
+} from "firebase/firestore";
 import { db } from "@/config/firebaseConfig";
 import DocumentList from "./DocumentList";
+import uuid4 from "uuid4";
+import { useUser } from "@clerk/nextjs";
 
 function SideNav({ params }) {
   const [documentList, setDocumentList] = useState([]);
+  const { user } = useUser();
 
   useEffect(() => {
     params && GetDocumentList();
@@ -53,6 +63,25 @@ function SideNav({ params }) {
       { scale: 1, opacity: 1, duration: 1, ease: "power2.out", delay: 0.3 } // Animation
     );
   }, []);
+
+  {
+    /* Create New Document */
+  }
+  const CreateNewDocument = async () => {
+    const docId = uuid4();
+    await setDoc(doc(db, "workspaceDocuments", docId.toString()), {
+      workspaceId: Number(workspaceId),
+      createdBy: user?.primaryEmailAddress?.emailAddress,
+      coverImage: null,
+      emoji: null,
+      id: docId,
+      documentName: "Untitled Document",
+      documentOutput: [],
+    });
+
+    setLoading(false);
+    router.replace("/workspace/" + workspaceId + "/" + docId);
+  };
 
   return (
     <div
