@@ -16,7 +16,7 @@ import { db } from "@/config/firebaseConfig";
 import DocumentList from "./DocumentList";
 import uuid4 from "uuid4";
 import { useUser } from "@clerk/nextjs";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 function SideNav({ params }) {
   const [documentList, setDocumentList] = useState([]);
@@ -67,9 +67,6 @@ function SideNav({ params }) {
     );
   }, []);
 
-  {
-    /* Create New Document */
-  }
   const CreateNewDocument = async () => {
     setLoading(true);
     const docId = uuid4();
@@ -108,7 +105,7 @@ function SideNav({ params }) {
           onClick={CreateNewDocument}
           className="text-lg py-0.5 rounded-full"
         >
-          {loading ? <Loader2Icon className="h-3 w-3 animate-spin" /> : "+"}+
+          {loading ? <Loader2Icon className="h-3 w-3 animate-spin" /> : "+"}
         </Button>
       </div>
       {/* Document List */}
