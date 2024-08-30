@@ -8,6 +8,7 @@ import { Progress } from "@/components/ui/progress";
 import { deleteDoc, doc } from "firebase/firestore";
 import { db } from "@/config/firebaseConfig";
 import ConfirmDeleteDialog from "./ConfirmDeleteDialog";
+import { toast } from "sonner";
 
 function DocumentList({ documentList, params }) {
   const router = useRouter();
@@ -20,6 +21,7 @@ function DocumentList({ documentList, params }) {
     } catch (error) {
       console.error("Error deleting document: ", error);
     }
+    toast("SynDoc Deleted!");
   };
 
   const handleDelete = (docId) => {
