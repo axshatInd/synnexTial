@@ -69,6 +69,9 @@ function SideNav({ params }) {
   }, []);
 
   const CreateNewDocument = async () => {
+    if (documentList?.length >= MAX_FILE) {
+      return;
+    }
     setLoading(true);
     const docId = uuid4();
     await setDoc(doc(db, "workspaceDocuments", docId.toString()), {
