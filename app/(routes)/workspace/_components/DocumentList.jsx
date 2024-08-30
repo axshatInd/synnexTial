@@ -7,9 +7,13 @@ import DocumentOptions from "./DocumentOptions";
 import { Progress } from "@/components/ui/progress";
 import { deleteDoc, doc } from "firebase/firestore";
 import { db } from "@/config/firebaseConfig";
+import ConfirmDeleteDialog from "./ConfirmDeleteDialog";
 
 function DocumentList({ documentList, params }) {
   const router = useRouter();
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [selectedDocId, setSelectedDocId] = useState(null);
+
   const deleteDocument = async (docId) => {
     try {
       await deleteDoc(doc(db, "workspaceDocuments", docId));
@@ -17,6 +21,25 @@ function DocumentList({ documentList, params }) {
       console.error("Error deleting document: ", error);
     }
   };
+
+  const handleDelete = (docId) => {
+    setSelectedDocId(docId);
+    setIsDialogOpen(true);
+  };
+
+  const confirmDelete = async () => {
+    if (selectedDocId) {
+      await deleteDocument(selectedDocId);
+      setIsDialogOpen(false);
+      setSelectedDocId(null);
+    }
+  };
+
+  const cancelDelete = () => {
+    setIsDialogOpen(false);
+    setSelectedDocId(null);
+  };
+
   const itemsRef = useRef([]);
   const progressRef = useRef(null);
   const [loading, setLoading] = useState(true);
@@ -39,7 +62,7 @@ function DocumentList({ documentList, params }) {
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev < 100) {
-          return prev + 100; // Increase progress by 25
+          return prev + 100; // Increase progress by 100
         }
         return prev;
       });
@@ -133,11 +156,17 @@ function DocumentList({ documentList, params }) {
           <div className="mr-1">
             <DocumentOptions
               doc={doc}
-              deleteDocument={(docId) => deleteDocument(docId)}
+              deleteDocument={() => handleDelete(doc?.id)} // Pass handleDelete instead of deleteDocument
             />
           </div>
         </div>
       ))}
+
+      <ConfirmDeleteDialog
+        isOpen={isDialogOpen}
+        onClose={cancelDelete}
+        onConfirm={confirmDelete}
+      />
     </div>
   );
 }
