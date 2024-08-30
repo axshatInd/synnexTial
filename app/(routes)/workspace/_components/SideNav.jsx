@@ -120,8 +120,15 @@ function SideNav({ params }) {
       </div>
 
       {/* Progress Bar */}
-      <div className="px-4 pb-4">
+      <div className="px-6 pb-10">
         <Progress value={33} />
+        <h2 className="mb-2 mt-3">
+          <strong>{documentList?.length}</strong> out of <strong>6</strong>{" "}
+          SynDocs nexed
+        </h2>
+        <h2 className="text-sm font-light my-2">
+          Please <strong>Upgrade</strong> your plan
+        </h2>
       </div>
     </div>
   );
