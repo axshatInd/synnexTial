@@ -8,7 +8,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import useTheme from "@/app/_components/useTheme";
 
-function DocumentOptions() {
+function DocumentOptions({ doc, deleteDocument }) {
+  // Destructure the props here
   const { theme } = useTheme();
 
   return (
@@ -43,7 +44,7 @@ function DocumentOptions() {
           />{" "}
           Rename
         </DropdownMenuItem>
-        <DropdownMenuItem>
+        <DropdownMenuItem onClick={() => deleteDocument(doc?.id)}>
           <Trash2Icon
             className={`h-3 w-3 mr-2 text-red-500 ${
               theme === "dark"

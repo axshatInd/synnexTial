@@ -5,9 +5,18 @@ import gsap from "gsap";
 import { useRouter } from "next/navigation";
 import DocumentOptions from "./DocumentOptions";
 import { Progress } from "@/components/ui/progress";
+import { deleteDoc, doc } from "firebase/firestore";
+import { db } from "@/config/firebaseConfig";
 
 function DocumentList({ documentList, params }) {
   const router = useRouter();
+  const deleteDocument = async (docId) => {
+    try {
+      await deleteDoc(doc(db, "workspaceDocuments", docId));
+    } catch (error) {
+      console.error("Error deleting document: ", error);
+    }
+  };
   const itemsRef = useRef([]);
   const progressRef = useRef(null);
   const [loading, setLoading] = useState(true);
@@ -122,7 +131,10 @@ function DocumentList({ documentList, params }) {
             </h2>
           </div>
           <div className="mr-1">
-            <DocumentOptions />
+            <DocumentOptions
+              doc={doc}
+              deleteDocument={(docId) => deleteDocument(docId)}
+            />
           </div>
         </div>
       ))}
