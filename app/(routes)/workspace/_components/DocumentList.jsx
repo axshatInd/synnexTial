@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import NextImage from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useRouter } from "next/navigation";
@@ -9,10 +9,23 @@ import { Progress } from "@/components/ui/progress";
 function DocumentList({ documentList, params }) {
   const router = useRouter();
   const itemsRef = useRef([]);
+  const progressRef = useRef(null);
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    // GSAP animation for progress bar
+    gsap.fromTo(
+      progressRef.current,
+      { width: "0%", opacity: 0 },
+      {
+        width: `${progress}%`,
+        opacity: 1,
+        duration: 0.5,
+        ease: "power1.out",
+      }
+    );
+
     // Start the progress animation
     const interval = setInterval(() => {
       setProgress((prev) => {
@@ -34,7 +47,7 @@ function DocumentList({ documentList, params }) {
     }
 
     return () => clearInterval(interval); // Cleanup interval on component unmount
-  }, [documentList]);
+  }, [progress, documentList]);
 
   useEffect(() => {
     // Trigger GSAP animation when loading is complete
@@ -55,7 +68,13 @@ function DocumentList({ documentList, params }) {
   if (loading) {
     return (
       <div className="p-4">
-        <Progress value={progress} />
+        <div className="relative h-2 rounded bg-gray-200 dark:bg-gray-700">
+          <div
+            ref={progressRef}
+            className="absolute h-full rounded bg-yellow-500 dark:bg-yellow-300"
+            style={{ width: `${progress}%` }}
+          ></div>
+        </div>
       </div>
     );
   }
@@ -77,7 +96,7 @@ function DocumentList({ documentList, params }) {
         >
           <div className="flex items-center">
             {!doc.emoji && (
-              <Image
+              <NextImage
                 src={"/document.svg"}
                 width={20}
                 height={20}
