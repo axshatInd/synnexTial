@@ -4,34 +4,57 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import useTheme from "@/app/_components/useTheme";
 
 function DocumentOptions() {
+  const { theme } = useTheme();
+
   return (
-    <div>
-      <DropdownMenu>
-        <DropdownMenuTrigger>
-          <MoreVertical className="h-3 w-3" />
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
-          <DropdownMenuItem>
-            {" "}
-            <Link2Icon className="h-3 w-3 mr-2" /> Share Link
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <PenBoxIcon className="h-3 w-3 mr-2" />
-            Rename
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Trash2Icon className="h-3 w-3 mr-2 text-red-500" />
-            Delete
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    </div>
+    <DropdownMenu>
+      <DropdownMenuTrigger>
+        <MoreVertical
+          className={`h-3 w-3 transition-colors duration-300 ${
+            theme === "dark"
+              ? "text-black group-hover:text-black dark:group-hover:text-black"
+              : "text-black group-hover:text-white"
+          }`}
+        />
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="bg-transparent">
+        <DropdownMenuItem>
+          <Link2Icon
+            className={`h-3 w-3 mr-2 ${
+              theme === "dark"
+                ? "text-white group-hover:text-black dark:group-hover:text-black"
+                : "text-black group-hover:text-white"
+            }`}
+          />{" "}
+          Share Link
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <PenBoxIcon
+            className={`h-3 w-3 mr-2 ${
+              theme === "dark"
+                ? "text-white group-hover:text-black dark:group-hover:text-black"
+                : "text-black group-hover:text-white"
+            }`}
+          />{" "}
+          Rename
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Trash2Icon
+            className={`h-3 w-3 mr-2 text-red-500 ${
+              theme === "dark"
+                ? "group-hover:text-black dark:group-hover:text-black"
+                : "group-hover:text-white"
+            }`}
+          />{" "}
+          Delete
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }
 
