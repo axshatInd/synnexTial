@@ -14,7 +14,7 @@ const dancing_script = Dancing_Script({ subsets: ["latin"] });
 
 function Footer() {
   return (
-    <footer className="text-center py-4">
+    <footer className="text-center py-4 bg-transparent fixed bottom-0 left-0 w-full z-40">
       <a
         href="https://www.instagram.com/akshat.7_"
         target="_blank"
@@ -51,7 +51,7 @@ export default function RootLayout({ children }) {
           className={`${outfit.className} ${theme} flex flex-col min-h-screen`}
         >
           <Header />
-          <main className="flex-grow pt-20">{children}</main>
+          <main className="flex-grow pt-20 z-10 relative">{children}</main>
           <Footer />
           <div className="fixed bottom-4 right-4 z-50">
             <ThemeSwitcher isDark={theme === "dark"} onChange={toggleTheme} />
