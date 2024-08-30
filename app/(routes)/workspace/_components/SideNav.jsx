@@ -18,6 +18,10 @@ import uuid4 from "uuid4";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { Progress } from "@/components/ui/progress";
+import { toast } from "sonner";
+
+// Define MAX_FILE here
+const MAX_FILE = 6;
 
 function SideNav({ params }) {
   const [documentList, setDocumentList] = useState([]);
@@ -70,6 +74,7 @@ function SideNav({ params }) {
 
   const CreateNewDocument = async () => {
     if (documentList?.length >= MAX_FILE) {
+      toast("Upgrade to add new SynDoc");
       return;
     }
     setLoading(true);
@@ -87,6 +92,9 @@ function SideNav({ params }) {
     setLoading(false);
     router.replace("/workspace/" + params?.workspaceId + "/" + docId);
   };
+
+  // Calculate the progress as a percentage
+  const progressValue = (documentList.length / MAX_FILE) * 100;
 
   return (
     <div
@@ -123,10 +131,10 @@ function SideNav({ params }) {
 
       {/* Progress Bar */}
       <div className="px-6 pb-10">
-        <Progress value={33} />
+        <Progress value={progressValue} />
         <h2 className="mb-2 mt-3">
-          <strong>{documentList?.length}</strong> out of <strong>6</strong>{" "}
-          SynDocs nexed
+          <strong>{documentList?.length}</strong> out of{" "}
+          <strong>{MAX_FILE}</strong> SynDocs created
         </h2>
         <h2 className="text-sm font-light my-2">
           Please <strong>Upgrade</strong> your plan

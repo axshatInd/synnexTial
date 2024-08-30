@@ -7,6 +7,7 @@ import Header from "./(routes)/dashboard/_components/Header";
 import ThemeSwitcher from "./_components/ThemeSwitcher"; // Import ThemeSwitcher
 import useTheme from "./_components/useTheme";
 import Head from "next/head"; // Import Head from next/head
+import { Toaster } from "@/components/ui/sonner";
 
 // Font configurations
 const outfit = Outfit({ subsets: ["latin"] });
@@ -51,7 +52,10 @@ export default function RootLayout({ children }) {
           className={`${outfit.className} ${theme} flex flex-col min-h-screen`}
         >
           <Header />
-          <main className="flex-grow pt-20 z-10 relative">{children}</main>
+          <main className="flex-grow pt-20 z-10 relative">
+            <Toaster />
+            {children}
+          </main>
           <Footer />
           <div className="fixed bottom-4 right-4 z-50">
             <ThemeSwitcher isDark={theme === "dark"} onChange={toggleTheme} />
