@@ -74,7 +74,14 @@ function SideNav({ params }) {
 
   const CreateNewDocument = async () => {
     if (documentList?.length >= MAX_FILE) {
-      toast("Upgrade to add new SynDoc");
+      toast("Upgrade to add new SynDoc", {
+        description:
+          "You reached the Max SynDocs creation limit, Please upgrade for more benefits.",
+        action: {
+          label: "Upgrade",
+          onClick: () => console.log("Undo"),
+        },
+      });
       return;
     }
     setLoading(true);
