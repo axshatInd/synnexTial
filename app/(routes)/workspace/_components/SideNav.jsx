@@ -17,6 +17,7 @@ import DocumentList from "./DocumentList";
 import uuid4 from "uuid4";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
+import { Progress } from "@/components/ui/progress";
 
 function SideNav({ params }) {
   const [documentList, setDocumentList] = useState([]);
@@ -31,7 +32,7 @@ function SideNav({ params }) {
   const GetDocumentList = () => {
     const q = query(
       collection(db, "workspaceDocuments"),
-      where("workspaceId", "==", Number(params?.workspaceid))
+      where("workspaceId", "==", Number(params?.workspaceId))
     );
     setDocumentList([]);
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -88,8 +89,9 @@ function SideNav({ params }) {
   return (
     <div
       ref={sideNavRef} // Reference for GSAP
-      className="h-screen md:w-72 hidden md:block fixed bg-slate-50 dark:bg-black rounded-3xl z-50 shadow-2xl mt-2 md:mt-4"
+      className="relative flex flex-col h-screen max-h-screen md:w-72 hidden md:flex fixed bg-slate-50 dark:bg-black rounded-3xl z-50 shadow-2xl mt-2 md:mt-4"
     >
+      {/* Header */}
       <div className="flex justify-between items-center p-4">
         <div ref={logoRef}>
           <Logo2 />
@@ -99,6 +101,8 @@ function SideNav({ params }) {
         </div>
       </div>
       <hr className=" mt-0.20rem mb-0.10rem" />
+
+      {/* SynDocs Header */}
       <div className="p-4 flex items-center justify-between">
         <h2 className="font-medium">SynDocs</h2>
         <Button
@@ -109,8 +113,16 @@ function SideNav({ params }) {
           {loading ? <Loader2Icon className="h-3 w-3 animate-spin" /> : "+"}
         </Button>
       </div>
+
       {/* Document List */}
-      <DocumentList documentList={documentList} params={params} />
+      <div className="flex-grow overflow-y-auto p-4">
+        <DocumentList documentList={documentList} params={params} />
+      </div>
+
+      {/* Progress Bar */}
+      <div className="px-4 pb-4">
+        <Progress value={33} />
+      </div>
     </div>
   );
 }
