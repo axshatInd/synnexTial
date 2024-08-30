@@ -41,7 +41,6 @@ function SideNav({ params }) {
         documents.push(doc.data());
       });
       setDocumentList(documents);
-      // console.log("Fetched documents:", documents); // Log to check
     });
   };
 
@@ -52,20 +51,20 @@ function SideNav({ params }) {
   useEffect(() => {
     gsap.fromTo(
       sideNavRef.current,
-      { x: -50, opacity: 0 }, // Initial state
-      { x: 0, opacity: 1, duration: 1, ease: "power2.out" } // Animation
+      { x: -50, opacity: 0 },
+      { x: 0, opacity: 1, duration: 1, ease: "power2.out" }
     );
 
     gsap.fromTo(
       logoRef.current,
-      { scale: 0.8, opacity: 0 }, // Initial state for logo
-      { scale: 1, opacity: 1, duration: 1, ease: "power2.out", delay: 0.3 } // Animation
+      { scale: 0.8, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 1, ease: "power2.out", delay: 0.3 }
     );
 
     gsap.fromTo(
       bellRef.current,
-      { scale: 0.8, opacity: 0 }, // Initial state for bell
-      { scale: 1, opacity: 1, duration: 1, ease: "power2.out", delay: 0.3 } // Animation
+      { scale: 0.8, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 1, ease: "power2.out", delay: 0.3 }
     );
   }, []);
 
@@ -88,8 +87,8 @@ function SideNav({ params }) {
 
   return (
     <div
-      ref={sideNavRef} // Reference for GSAP
-      className="relative flex flex-col h-screen max-h-screen md:w-72 hidden md:flex fixed bg-slate-50 dark:bg-black rounded-3xl z-50 shadow-2xl mt-2 md:mt-4"
+      ref={sideNavRef}
+      className="relative flex flex-col min-h-[85vh] max-h-[95vh] md:w-72 hidden md:flex fixed bg-slate-50 dark:bg-black rounded-3xl z-50 shadow-2xl mt-2 md:mt-4"
     >
       {/* Header */}
       <div className="flex justify-between items-center p-4">
@@ -100,7 +99,7 @@ function SideNav({ params }) {
           <Bell className="h-8 w-8 p-2 rounded-full bg-gray-200 dark:bg-white text-gray-800 dark:text-black shadow-md" />
         </div>
       </div>
-      <hr className=" mt-0.20rem mb-0.10rem" />
+      <hr className="mt-0.20rem mb-0.10rem" />
 
       {/* SynDocs Header */}
       <div className="p-4 flex items-center justify-between">
