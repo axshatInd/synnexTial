@@ -6,6 +6,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import Header from "./(routes)/dashboard/_components/Header";
 import ThemeSwitcher from "./_components/ThemeSwitcher"; // Import ThemeSwitcher
 import useTheme from "./_components/useTheme";
+import Head from "next/head"; // Import Head from next/head
 
 // Font configurations
 const outfit = Outfit({ subsets: ["latin"] });
@@ -32,6 +33,20 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang="en">
+        <Head>
+          <title>SynnexTial</title> {/* Set the page title */}
+          <meta
+            name="description"
+            content="A collaborative workspace you needed."
+          />{" "}
+          {/* Set the description */}
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1"
+          />{" "}
+          {/* Responsive design */}
+          {/* Add other meta tags or link tags as needed */}
+        </Head>
         <body
           className={`${outfit.className} ${theme} flex flex-col min-h-screen`}
         >
