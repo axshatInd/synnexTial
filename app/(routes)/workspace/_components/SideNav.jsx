@@ -99,7 +99,7 @@ function SideNav({ params }) {
   return (
     <div
       ref={sideNavRef}
-      className="relative flex flex-col min-h-[85vh] max-h-[95vh] md:w-72 w-0 md:flex hidden fixed bg-slate-50 dark:bg-black rounded-3xl z-50 shadow-2xl mt-2 md:mt-4"
+      className="relative flex ml-3 flex-col min-h-[85vh] max-h-[95vh] md:w-72 w-0 md:flex hidden fixed bg-slate-50 dark:bg-black rounded-3xl z-50 shadow-2xl mt-2 md:mt-4"
     >
       {/* Header */}
       <div className="flex justify-between items-center p-4">
