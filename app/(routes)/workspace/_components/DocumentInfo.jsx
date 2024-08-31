@@ -2,6 +2,7 @@ import CoverPicker from "@/app/_components/CoverPicker";
 import EmojiPickerComponent from "@/app/_components/EmojiPickerComponent";
 import { SmilePlus } from "lucide-react";
 import Image from "next/image";
+import { Input } from "postcss";
 import React, { useState } from "react";
 
 function DocumentInfo() {
@@ -43,6 +44,14 @@ function DocumentInfo() {
       </div>
 
       {/* File Name */}
+      <div className="mt-5 p-10">
+        <input
+          type="text"
+          placeholder="Untitled SynDoc"
+          defaultValue={"Untitled SynDoc"}
+          className="font-semibold text-2xl outline-none"
+        />
+      </div>
     </div>
   );
 }
