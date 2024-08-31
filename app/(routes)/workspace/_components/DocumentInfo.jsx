@@ -4,23 +4,24 @@ import React, { useState } from "react";
 
 function DocumentInfo() {
   const [coverImage, setCoverImage] = useState("/cover.png");
+
   return (
     <div>
       {/* Cover Image */}
       <CoverPicker>
-        <div className="shadow-2xl rounded-xl">
+        <div className="relative shadow-2xl rounded-xl group">
           {/* Cover Image */}
-
-          <h2 className="hidden absolute p-4 w-full h-full items-center group-hover:flex justify-center text-black">
-            Change Cover
-          </h2>
-          <div className="group-hover:opacity-70">
+          <div className="relative">
             <Image
               src={coverImage}
               width={400}
               height={440}
+              alt="Cover Image"
               className="w-full h-[150px] object-cover rounded-t-xl"
             />
+            <h2 className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white opacity-0 group-hover:opacity-100 rounded-t-xl transition-opacity duration-300">
+              Change Cover
+            </h2>
           </div>
         </div>
       </CoverPicker>
