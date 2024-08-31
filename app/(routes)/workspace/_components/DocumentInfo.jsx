@@ -1,20 +1,68 @@
+"use client";
 import CoverPicker from "@/app/_components/CoverPicker";
 import EmojiPickerComponent from "@/app/_components/EmojiPickerComponent";
+import { db } from "@/config/firebaseConfig";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { SmilePlus } from "lucide-react";
 import Image from "next/image";
-import { Input } from "postcss";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { toast } from "sonner";
 
-function DocumentInfo() {
+function DocumentInfo({ params }) {
   const [coverImage, setCoverImage] = useState("/cover.png");
   const [emoji, setEmoji] = useState(); // State to store selected emoji
+  const [documentInfo, setDocumentInfo] = useState();
+
+  useEffect(() => {
+    if (params?.documentId) {
+      GetDocumentInfo();
+    }
+  }, [params]);
+
+  const GetDocumentInfo = async () => {
+    try {
+      const docRef = doc(db, "workspaceDocuments", params?.documentId);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        setDocumentInfo(docSnap.data());
+        setEmoji(docSnap.data()?.emoji);
+        docSnap.data()?.coverImage && setCoverImage(docSnap.data()?.coverImage);
+      }
+    } catch (error) {
+      console.error("Error getting document:", error);
+    }
+  };
+
+  const updateDocumentInfo = async (key, value) => {
+    if (!params?.documentId) {
+      console.error("Document ID is not available");
+      return;
+    }
+
+    try {
+      const docRef = doc(db, "workspaceDocuments", params.documentId);
+      await updateDoc(docRef, {
+        [key]: value,
+      });
+      console.log("Document updated successfully"); // Debugging statement
+      toast("Document Updated");
+    } catch (error) {
+      console.error("Error updating document:", error);
+    }
+  };
 
   return (
     <div>
       {/* Cover Image */}
-      <CoverPicker setNewCover={(cover) => setCoverImage(cover)}>
+      <CoverPicker
+        setNewCover={(cover) => {
+          console.log("New cover selected:", cover); // Debugging statement
+          setCoverImage(cover);
+          updateDocumentInfo("coverImage", cover);
+        }}
+      >
         <div className="relative shadow-2xl rounded-xl group">
-          {/* Cover Image */}
           <div className="relative">
             <Image
               src={coverImage}
@@ -37,7 +85,7 @@ function DocumentInfo() {
             {emoji ? (
               <span className="text-3xl">{emoji}</span>
             ) : (
-              <SmilePlus className="h-5 w-5 text-gray-500" />
+              <SmilePlus className="h-10 w-10 text-gray-500" />
             )}
           </div>
         </EmojiPickerComponent>
@@ -48,8 +96,8 @@ function DocumentInfo() {
         <input
           type="text"
           placeholder="Untitled SynDoc"
-          defaultValue={"Untitled SynDoc"}
-          className="font-semibold text-2xl outline-none"
+          defaultValue={documentInfo?.documentName}
+          className="bg-white dark:bg-gray-800 text-black dark:text-white font-semibold text-2xl outline-none p-2 rounded-lg"
         />
       </div>
     </div>

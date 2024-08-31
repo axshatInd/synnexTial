@@ -12,7 +12,7 @@ function WorkspaceDocument({ params }) {
       {/* Main Content Area */}
       <div className="flex-1 md:ml-2 ml-0 p-6 md:mt-4">
         <div className="bg-white dark:bg-black rounded-lg p-4 shadow-md h-full">
-          <DocumentEditorSection />
+          <DocumentEditorSection params={params} />
         </div>
       </div>
     </div>
