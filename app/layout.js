@@ -22,7 +22,7 @@ function Footer() {
         rel="noopener noreferrer"
         className="text-gray-400 hover:text-gray-600 transition-colors duration-300"
       >
-        &copy; axshatInd
+        &copy; SynnexTial
       </a>
     </footer>
   );
@@ -58,7 +58,11 @@ export default function RootLayout({ children }) {
           </main>
           <Footer />
           <div className="fixed bottom-4 right-4 z-50">
-            <ThemeSwitcher isDark={theme === "dark"} onChange={toggleTheme} />
+            <ThemeSwitcher
+              isDark={theme === "dark"}
+              onChange={toggleTheme}
+              className="w-10 h-10 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12"
+            />
           </div>
         </body>
       </html>

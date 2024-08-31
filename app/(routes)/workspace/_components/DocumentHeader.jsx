@@ -4,7 +4,7 @@ import React from "react";
 function DocumentHeader() {
   return (
     <div>
-      <div className="z-10 flex gap-2 shadow-sm justify-end pr-3 py-3 rounded-xl">
+      <div className="z-10 flex gap-2 justify-end pr-3 pt-1 rounded-xl">
         <Button>Share</Button>
       </div>
     </div>
