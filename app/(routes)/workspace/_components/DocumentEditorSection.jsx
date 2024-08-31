@@ -5,10 +5,11 @@ import DocumentInfo from "./DocumentInfo";
 function DocumentEditorSection() {
   return (
     <div>
-      {/* Document Info */}
-      <DocumentInfo />
       {/* Header section with share button, etc */}
       <DocumentHeader />
+
+      {/* Document Info */}
+      <DocumentInfo />
 
       {/* Rich Text Editor */}
     </div>
