@@ -8,6 +8,7 @@ import Warning from "@editorjs/warning";
 import ToggleBlock from "editorjs-toggle-block";
 import Paragraph from "@editorjs/paragraph"; // Import the Paragraph tool
 import Alert from "editorjs-alert";
+import Title from "title-editorjs";
 
 function RichDocumentEditor() {
   const editorRef = useRef(null);
@@ -29,6 +30,7 @@ function RichDocumentEditor() {
             defaultLineThickness: 2,
           },
         },
+        title: Title,
         warning: {
           class: Warning,
           inlineToolbar: true,
