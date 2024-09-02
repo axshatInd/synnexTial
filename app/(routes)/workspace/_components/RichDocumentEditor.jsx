@@ -19,6 +19,7 @@ import LinkTool from "@editorjs/link";
 import AttachesTool from "@editorjs/attaches";
 import Table from "@editorjs/table";
 import CodeTool from "@editorjs/code";
+import RawTool from "@editorjs/raw";
 
 function RichDocumentEditor() {
   const editorRef = useRef(null);
@@ -40,6 +41,7 @@ function RichDocumentEditor() {
             defaultLineThickness: 2,
           },
         },
+        raw: RawTool,
         code: CodeTool,
         attaches: {
           class: AttachesTool,
