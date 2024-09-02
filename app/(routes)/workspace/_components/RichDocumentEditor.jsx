@@ -1,11 +1,16 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import EditorJS from "@editorjs/editorjs";
 
 function RichDocumentEditor() {
   const ref = useRef();
   let editor;
+
+  useEffect(() => {
+    InitEditor();
+  });
+
   const InitEditor = () => {
-    if (!editor.current) {
+    if (!editor?.current) {
       editor = new EditorJS({
         /**
          * Id of Element that should contain Editor instance
