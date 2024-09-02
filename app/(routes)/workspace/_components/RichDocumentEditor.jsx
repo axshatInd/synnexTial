@@ -14,6 +14,7 @@ import NestedList from "@editorjs/nested-list";
 import Checklist from "@editorjs/checklist";
 import editorjsNestedChecklist from "@calumk/editorjs-nested-checklist";
 import ImageTool from "@editorjs/image";
+import SimpleImage from "@editorjs/simple-image";
 
 function RichDocumentEditor() {
   const editorRef = useRef(null);
@@ -35,6 +36,7 @@ function RichDocumentEditor() {
             defaultLineThickness: 2,
           },
         },
+        image: SimpleImage,
         list: {
           class: List,
           inlineToolbar: true,
