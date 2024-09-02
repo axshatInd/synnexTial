@@ -21,7 +21,7 @@ function RichDocumentEditor() {
   }, []);
 
   return (
-    <div className="px-20 ml-10">
+    <div className="">
       <div id="editorjs"></div>
     </div>
   );
