@@ -21,6 +21,7 @@ import Table from "@editorjs/table";
 import CodeTool from "@editorjs/code";
 import RawTool from "@editorjs/raw";
 import CodeBox from "@bomdi/codebox";
+import Marker from "@editorjs/marker";
 
 function RichDocumentEditor() {
   const editorRef = useRef(null);
@@ -50,6 +51,10 @@ function RichDocumentEditor() {
             themeName: "atom-one-dark", // Optional
             useDefaultTheme: "light", // Optional. This also determines the background color of the language select drop-down
           },
+        },
+        Marker: {
+          class: Marker,
+          shortcut: "CMD+SHIFT+M",
         },
         raw: RawTool,
         code: CodeTool,
