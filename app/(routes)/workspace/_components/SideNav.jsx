@@ -142,9 +142,6 @@ function SideNav({ params }) {
           <strong>{documentList?.length}</strong> out of{" "}
           <strong>{MAX_FILE}</strong> SynDocs created
         </h2>
-        <h2 className="text-sm font-light my-2">
-          Please <strong>Upgrade</strong> your plan
-        </h2>
       </div>
     </div>
   );
