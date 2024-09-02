@@ -5,7 +5,7 @@ import EditorJS from "@editorjs/editorjs";
 import Header from "@editorjs/header";
 import Delimiter from "@editorjs/delimiter";
 import Warning from "@editorjs/warning";
-import Alert from "editorjs-alert"; // Import the Alert plugin
+import ToggleBlock from "editorjs-toggle-block";
 
 function RichDocumentEditor() {
   const editorRef = useRef(null);
@@ -19,7 +19,7 @@ function RichDocumentEditor() {
         delimiter: {
           class: Delimiter,
           config: {
-            styleOptions: ["star", "dash", "line"], // Ensure these options are supported
+            styleOptions: ["star", "dash", "line"],
             defaultStyle: "star",
             lineWidthOptions: [8, 15, 25, 35, 50, 60, 100],
             defaultLineWidth: 25,
@@ -36,13 +36,9 @@ function RichDocumentEditor() {
             messagePlaceholder: "Message",
           },
         },
-        alert: {
-          class: Alert, // Use the Alert plugin
-          inlineToolbar: true, // You can customize this option
-          config: {
-            titlePlaceholder: "Alert Title",
-            messagePlaceholder: "Alert Message",
-          },
+        toggle: {
+          class: ToggleBlock,
+          inlineToolbar: true,
         },
       },
     });
