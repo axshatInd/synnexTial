@@ -6,6 +6,8 @@ import Header from "@editorjs/header";
 import Delimiter from "@editorjs/delimiter";
 import Warning from "@editorjs/warning";
 import ToggleBlock from "editorjs-toggle-block";
+import Paragraph from "@editorjs/paragraph"; // Import the Paragraph tool
+import Alert from "editorjs-alert";
 
 function RichDocumentEditor() {
   const editorRef = useRef(null);
@@ -36,8 +38,31 @@ function RichDocumentEditor() {
             messagePlaceholder: "Message",
           },
         },
+        alert: {
+          class: Alert,
+          inlineToolbar: true,
+          shortcut: "CMD+SHIFT+A",
+          config: {
+            alertTypes: [
+              "primary",
+              "secondary",
+              "info",
+              "success",
+              "warning",
+              "danger",
+              "light",
+              "dark",
+            ],
+            defaultType: "primary",
+            messagePlaceholder: "Enter something",
+          },
+        },
         toggle: {
           class: ToggleBlock,
+          inlineToolbar: true,
+        },
+        paragraph: {
+          class: Paragraph,
           inlineToolbar: true,
         },
       },
