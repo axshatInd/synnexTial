@@ -97,7 +97,7 @@ function DocumentInfo({ params }) {
       </div>
 
       {/* File Name */}
-      <div className="pl-10">
+      <div className="">
         <input
           type="text"
           placeholder="Untitled SynDoc"

@@ -21,7 +21,7 @@ function RichDocumentEditor() {
   }, []);
 
   return (
-    <div className="">
+    <div className="editor-container">
       <div id="editorjs"></div>
     </div>
   );
