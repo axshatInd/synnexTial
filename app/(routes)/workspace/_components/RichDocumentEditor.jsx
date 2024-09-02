@@ -15,6 +15,7 @@ import Checklist from "@editorjs/checklist";
 import editorjsNestedChecklist from "@calumk/editorjs-nested-checklist";
 import ImageTool from "@editorjs/image";
 import SimpleImage from "@editorjs/simple-image";
+import LinkTool from "@editorjs/link";
 
 function RichDocumentEditor() {
   const editorRef = useRef(null);
@@ -42,6 +43,12 @@ function RichDocumentEditor() {
           inlineToolbar: true,
           config: {
             defaultStyle: "unordered",
+          },
+        },
+        linkTool: {
+          class: LinkTool,
+          config: {
+            endpoint: "http://localhost:8008/fetchUrl", // Your backend endpoint for url data fetching,
           },
         },
         title: Title,
