@@ -2,24 +2,24 @@ import React, { useEffect, useRef } from "react";
 import EditorJS from "@editorjs/editorjs";
 
 function RichDocumentEditor() {
-  const ref = useRef();
-  let editor;
+  const editorRef = useRef(null);
 
   useEffect(() => {
-    InitEditor();
-  });
+    // Initialize Editor.js only on the client side
+    const editor = new EditorJS({
+      holder: "editorjs",
+    });
 
-  const InitEditor = () => {
-    if (!editor?.current) {
-      editor = new EditorJS({
-        /**
-         * Id of Element that should contain Editor instance
-         */
-        holder: "editorjs",
-      });
-      ref.current = editor;
-    }
-  };
+    editorRef.current = editor;
+
+    return () => {
+      // Clean up Editor.js instance when the component unmounts
+      if (editorRef.current) {
+        editorRef.current.destroy();
+      }
+    };
+  }, []);
+
   return (
     <div className="px-20 ml-10">
       <div id="editorjs"></div>

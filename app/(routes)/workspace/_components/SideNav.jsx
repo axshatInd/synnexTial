@@ -20,7 +20,6 @@ import { useRouter } from "next/navigation";
 import { Progress } from "@/components/ui/progress";
 import { toast } from "sonner";
 
-// Define MAX_FILE here
 const MAX_FILE = 6;
 
 function SideNav({ params }) {
@@ -100,13 +99,13 @@ function SideNav({ params }) {
     router.replace("/workspace/" + params?.workspaceId + "/" + docId);
   };
 
-  // Calculate the progress as a percentage
   const progressValue = (documentList.length / MAX_FILE) * 100;
 
   return (
     <div
       ref={sideNavRef}
-      className="relative flex ml-3 flex-col min-h-[85vh] max-h-[95vh] md:w-72 w-0 md:flex hidden fixed bg-slate-50 dark:bg-black rounded-3xl z-50 shadow-2xl mt-2 md:mt-4"
+      className="relative flex ml-3 flex-col min-h-[85vh] max-h-[95vh] md:w-72 w-0 md:flex hidden fixed top-0 left-0 bg-slate-50 dark:bg-black rounded-3xl z-50 shadow-2xl mt-2 md:mt-4"
+      style={{ height: "100vh" }} // Ensures the SideNav takes the full viewport height
     >
       {/* Header */}
       <div className="flex justify-between items-center p-4">
