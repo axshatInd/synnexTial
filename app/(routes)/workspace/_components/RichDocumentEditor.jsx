@@ -6,7 +6,7 @@ import Header from "@editorjs/header";
 import Delimiter from "@editorjs/delimiter";
 import Warning from "@editorjs/warning";
 import ToggleBlock from "editorjs-toggle-block";
-import Paragraph from "@editorjs/paragraph"; // Import the Paragraph tool
+import Paragraph from "@editorjs/paragraph";
 import Alert from "editorjs-alert";
 import Title from "title-editorjs";
 import List from "@editorjs/list";
@@ -23,12 +23,12 @@ import RawTool from "@editorjs/raw";
 import CodeBox from "@bomdi/codebox";
 import Marker from "@editorjs/marker";
 import InlineCode from "@editorjs/inline-code";
+import Undo from "editorjs-undo"; // Import the Undo plugin
 
 function RichDocumentEditor() {
   const editorRef = useRef(null);
 
   useEffect(() => {
-    // Initialize Editor.js only on the client side
     const editor = new EditorJS({
       holder: "editorjs",
       tools: {
@@ -152,6 +152,9 @@ function RichDocumentEditor() {
           class: Paragraph,
           inlineToolbar: true,
         },
+      },
+      onReady: () => {
+        new Undo({ editor }); // Initialize the Undo plugin
       },
     });
 
