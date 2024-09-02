@@ -34,6 +34,13 @@ function RichDocumentEditor() {
             defaultLineThickness: 2,
           },
         },
+        list: {
+          class: List,
+          inlineToolbar: true,
+          config: {
+            defaultStyle: "unordered",
+          },
+        },
         title: Title,
 
         list: {
