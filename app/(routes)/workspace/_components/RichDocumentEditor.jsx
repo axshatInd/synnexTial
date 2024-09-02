@@ -16,6 +16,7 @@ import editorjsNestedChecklist from "@calumk/editorjs-nested-checklist";
 import ImageTool from "@editorjs/image";
 import SimpleImage from "@editorjs/simple-image";
 import LinkTool from "@editorjs/link";
+import AttachesTool from "@editorjs/attaches";
 
 function RichDocumentEditor() {
   const editorRef = useRef(null);
@@ -35,6 +36,12 @@ function RichDocumentEditor() {
             defaultLineWidth: 25,
             lineThicknessOptions: [1, 2, 3, 4, 5, 6],
             defaultLineThickness: 2,
+          },
+        },
+        attaches: {
+          class: AttachesTool,
+          config: {
+            endpoint: "http://localhost:8008/uploadFile",
           },
         },
         image: SimpleImage,

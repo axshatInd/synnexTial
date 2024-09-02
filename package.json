@@ -13,6 +13,7 @@
     "@clerk/nextjs": "^5.3.3",
     "@clerk/themes": "^2.1.21",
     "@coolbytes/editorjs-delimiter": "^1.0.3",
+    "@editorjs/attaches": "^1.3.0",
     "@editorjs/checklist": "^1.6.0",
     "@editorjs/delimiter": "^1.4.2",
     "@editorjs/editorjs": "^2.30.5",
