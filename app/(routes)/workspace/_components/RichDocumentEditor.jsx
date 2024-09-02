@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import EditorJS from "@editorjs/editorjs";
 import Header from "@editorjs/header";
+import Delimiter from "@editorjs/delimiter";
 
 function RichDocumentEditor() {
   const editorRef = useRef(null);
@@ -11,6 +12,7 @@ function RichDocumentEditor() {
       holder: "editorjs",
       tools: {
         header: Header,
+        delimiter: Delimiter,
       },
     });
 
