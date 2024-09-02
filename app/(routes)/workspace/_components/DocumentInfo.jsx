@@ -97,12 +97,12 @@ function DocumentInfo({ params }) {
       </div>
 
       {/* File Name */}
-      <div className="">
+      <div className="flex items-center justify-center">
         <input
           type="text"
           placeholder="Untitled SynDoc"
           defaultValue={documentInfo?.documentName}
-          className="bg-white dark:bg-gray-800 text-black dark:text-white font-semibold text-2xl outline-none p-2 rounded-lg"
+          className="text-black dark:text-white font-semibold text-2xl outline-none p-2 rounded-lg min-w-[100px] max-w-full bg-transparent placeholder-gray-500 dark:placeholder-gray-400"
           onBlur={(event) =>
             updateDocumentInfo("documentName", event.target.value)
           }
