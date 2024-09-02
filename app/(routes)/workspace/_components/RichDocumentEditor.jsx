@@ -17,6 +17,7 @@ import ImageTool from "@editorjs/image";
 import SimpleImage from "@editorjs/simple-image";
 import LinkTool from "@editorjs/link";
 import AttachesTool from "@editorjs/attaches";
+import Table from "@editorjs/table";
 
 function RichDocumentEditor() {
   const editorRef = useRef(null);
@@ -50,6 +51,14 @@ function RichDocumentEditor() {
           inlineToolbar: true,
           config: {
             defaultStyle: "unordered",
+          },
+        },
+        table: {
+          class: Table,
+          inlineToolbar: true,
+          config: {
+            rows: 2,
+            cols: 3,
           },
         },
         linkTool: {
