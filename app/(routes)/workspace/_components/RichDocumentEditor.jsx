@@ -11,6 +11,7 @@ import Alert from "editorjs-alert";
 import Title from "title-editorjs";
 import List from "@editorjs/list";
 import NestedList from "@editorjs/nested-list";
+import Checklist from "@editorjs/checklist";
 
 function RichDocumentEditor() {
   const editorRef = useRef(null);
@@ -69,6 +70,11 @@ function RichDocumentEditor() {
             defaultType: "primary",
             messagePlaceholder: "Enter something",
           },
+        },
+
+        checklist: {
+          class: Checklist,
+          inlineToolbar: true,
         },
         toggle: {
           class: ToggleBlock,
