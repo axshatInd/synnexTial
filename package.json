@@ -21,6 +21,7 @@
     "@editorjs/editorjs": "^2.30.5",
     "@editorjs/header": "^2.8.7",
     "@editorjs/image": "^2.9.3",
+    "@editorjs/inline-code": "^1.5.1",
     "@editorjs/link": "^2.6.2",
     "@editorjs/list": "^1.10.0",
     "@editorjs/marker": "^1.4.0",

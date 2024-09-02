@@ -22,6 +22,7 @@ import CodeTool from "@editorjs/code";
 import RawTool from "@editorjs/raw";
 import CodeBox from "@bomdi/codebox";
 import Marker from "@editorjs/marker";
+import InlineCode from "@editorjs/inline-code";
 
 function RichDocumentEditor() {
   const editorRef = useRef(null);
@@ -42,6 +43,10 @@ function RichDocumentEditor() {
             lineThicknessOptions: [1, 2, 3, 4, 5, 6],
             defaultLineThickness: 2,
           },
+        },
+        inlineCode: {
+          class: InlineCode,
+          shortcut: "CMD+SHIFT+M",
         },
         codeBox: {
           class: CodeBox,
