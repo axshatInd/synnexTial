@@ -163,25 +163,30 @@
   height: 1.5rem;
 }
 
-.editor-container {
-  width: 100%; /* Full width of the parent container */
-  height: calc(100vh - 120px); /* Adjust based on header and other elements */
-  padding: 20px; /* Optional: Add padding if needed */
-  box-sizing: border-box; /* Ensure padding is included in width/height */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#editorjs {
-  width: 100%;
-  height: 100%;
-  border: 1px solid #ddd; /* Optional: Add a border for better visibility */
-  box-sizing: border-box;
-  padding: 10px; /* Add padding inside the editor to ensure content is not flush with the edges */
-  overflow: auto; /* Ensure content can scroll if it overflows */
-}
-
 .provide-what-ever-the-selector-is {
   padding-left: 10px; /* Adjust as needed to ensure text is not too close to the left margin */
+}
+
+h1.ce-header {
+  @apply text-3xl font-bold;
+}
+
+h2.ce-header {
+  @apply text-2xl font-bold;
+}
+
+h3.ce-header {
+  @apply text-xl font-semibold;
+}
+
+h4.ce-header {
+  @apply text-lg font-semibold;
+}
+
+h5.ce-header {
+  @apply text-base font-bold;
+}
+
+h6.ce-header {
+  @apply text-base font-semibold;
 }
