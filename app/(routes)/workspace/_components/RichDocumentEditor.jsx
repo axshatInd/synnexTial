@@ -13,6 +13,7 @@ import List from "@editorjs/list";
 import NestedList from "@editorjs/nested-list";
 import Checklist from "@editorjs/checklist";
 import editorjsNestedChecklist from "@calumk/editorjs-nested-checklist";
+import ImageTool from "@editorjs/image";
 
 function RichDocumentEditor() {
   const editorRef = useRef(null);
@@ -88,6 +89,15 @@ function RichDocumentEditor() {
         toggle: {
           class: ToggleBlock,
           inlineToolbar: true,
+        },
+        image: {
+          class: ImageTool,
+          config: {
+            endpoints: {
+              byFile: "http://localhost:8008/uploadFile", // Your backend file uploader endpoint
+              byUrl: "http://localhost:8008/fetchUrl", // Your endpoint that provides uploading by Url
+            },
+          },
         },
         paragraph: {
           class: Paragraph,
