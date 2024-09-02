@@ -14,14 +14,14 @@ function DocumentInfo({ params }) {
   const [documentInfo, setDocumentInfo] = useState();
 
   useEffect(() => {
-    if (params?.documentId) {
+    if (params?.documentid) {
       GetDocumentInfo();
     }
   }, [params]);
 
   const GetDocumentInfo = async () => {
     try {
-      const docRef = doc(db, "workspaceDocuments", params?.documentId);
+      const docRef = doc(db, "workspaceDocuments", params?.documentid);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
@@ -35,13 +35,13 @@ function DocumentInfo({ params }) {
   };
 
   const updateDocumentInfo = async (key, value) => {
-    if (!params?.documentId) {
+    if (!params?.documentid) {
       console.error("Document ID is not available");
       return;
     }
 
     try {
-      const docRef = doc(db, "workspaceDocuments", params.documentId);
+      const docRef = doc(db, "workspaceDocuments", params.documentid);
       await updateDoc(docRef, {
         [key]: value,
       });
