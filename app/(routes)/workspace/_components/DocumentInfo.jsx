@@ -80,7 +80,12 @@ function DocumentInfo({ params }) {
 
       {/* Emoji Picker */}
       <div className="absolute mt-[-40px] cursor-pointer">
-        <EmojiPickerComponent setEmojiIcon={(emoji) => setEmoji(emoji)}>
+        <EmojiPickerComponent
+          setEmojiIcon={(emoji) => {
+            setEmoji(emoji);
+            updateDocumentInfo("emoji", emoji);
+          }}
+        >
           <div className="p-4 rounded-md">
             {emoji ? (
               <span className="text-3xl">{emoji}</span>
@@ -98,6 +103,9 @@ function DocumentInfo({ params }) {
           placeholder="Untitled SynDoc"
           defaultValue={documentInfo?.documentName}
           className="bg-white dark:bg-gray-800 text-black dark:text-white font-semibold text-2xl outline-none p-2 rounded-lg"
+          onBlur={(event) =>
+            updateDocumentInfo("documentName", event.target.value)
+          }
         />
       </div>
     </div>
