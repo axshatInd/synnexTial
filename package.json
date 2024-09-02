@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@calumk/editorjs-nested-checklist": "^1.1.0",
     "@clerk/nextjs": "^5.3.3",
     "@clerk/themes": "^2.1.21",
     "@coolbytes/editorjs-delimiter": "^1.0.3",

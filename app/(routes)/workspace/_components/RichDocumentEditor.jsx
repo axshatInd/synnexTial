@@ -12,6 +12,7 @@ import Title from "title-editorjs";
 import List from "@editorjs/list";
 import NestedList from "@editorjs/nested-list";
 import Checklist from "@editorjs/checklist";
+import editorjsNestedChecklist from "@calumk/editorjs-nested-checklist";
 
 function RichDocumentEditor() {
   const editorRef = useRef(null);
@@ -76,6 +77,7 @@ function RichDocumentEditor() {
           class: Checklist,
           inlineToolbar: true,
         },
+        nestedchecklist: editorjsNestedChecklist,
         toggle: {
           class: ToggleBlock,
           inlineToolbar: true,
