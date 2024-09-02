@@ -20,6 +20,7 @@ import AttachesTool from "@editorjs/attaches";
 import Table from "@editorjs/table";
 import CodeTool from "@editorjs/code";
 import RawTool from "@editorjs/raw";
+import CodeBox from "@bomdi/codebox";
 
 function RichDocumentEditor() {
   const editorRef = useRef(null);
@@ -39,6 +40,15 @@ function RichDocumentEditor() {
             defaultLineWidth: 25,
             lineThicknessOptions: [1, 2, 3, 4, 5, 6],
             defaultLineThickness: 2,
+          },
+        },
+        codeBox: {
+          class: CodeBox,
+          config: {
+            themeURL:
+              "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/dracula.min.css", // Optional
+            themeName: "atom-one-dark", // Optional
+            useDefaultTheme: "light", // Optional. This also determines the background color of the language select drop-down
           },
         },
         raw: RawTool,
