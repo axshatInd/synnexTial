@@ -1,7 +1,10 @@
+"use client";
+
 import React, { useEffect, useRef } from "react";
 import EditorJS from "@editorjs/editorjs";
 import Header from "@editorjs/header";
 import Delimiter from "@editorjs/delimiter";
+import Warning from "@editorjs/warning";
 
 function RichDocumentEditor() {
   const editorRef = useRef(null);
@@ -13,6 +16,15 @@ function RichDocumentEditor() {
       tools: {
         header: Header,
         delimiter: Delimiter,
+        warning: {
+          class: Warning,
+          inlineToolbar: true,
+          shortcut: "CMD+SHIFT+W",
+          config: {
+            titlePlaceholder: "Title",
+            messagePlaceholder: "Message",
+          },
+        },
       },
     });
 
