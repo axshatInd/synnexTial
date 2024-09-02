@@ -53,7 +53,7 @@ function DocumentInfo({ params }) {
   };
 
   return (
-    <div>
+    <div className="relative">
       {/* Cover Image */}
       <CoverPicker
         setNewCover={(cover) => {
@@ -79,14 +79,14 @@ function DocumentInfo({ params }) {
       </CoverPicker>
 
       {/* Emoji Picker */}
-      <div className="absolute mt-[-40px] cursor-pointer">
+      <div className="mt-4">
         <EmojiPickerComponent
           setEmojiIcon={(emoji) => {
             setEmoji(emoji);
             updateDocumentInfo("emoji", emoji);
           }}
         >
-          <div className="p-4 rounded-md">
+          <div className="p-4 rounded-md cursor-pointer">
             {emoji ? (
               <span className="text-3xl">{emoji}</span>
             ) : (
@@ -97,7 +97,7 @@ function DocumentInfo({ params }) {
       </div>
 
       {/* File Name */}
-      <div className="mt-5 p-10">
+      <div className="pl-10">
         <input
           type="text"
           placeholder="Untitled SynDoc"
