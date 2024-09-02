@@ -9,6 +9,7 @@ import ToggleBlock from "editorjs-toggle-block";
 import Paragraph from "@editorjs/paragraph"; // Import the Paragraph tool
 import Alert from "editorjs-alert";
 import Title from "title-editorjs";
+import List from "@editorjs/list";
 
 function RichDocumentEditor() {
   const editorRef = useRef(null);
@@ -31,6 +32,14 @@ function RichDocumentEditor() {
           },
         },
         title: Title,
+
+        list: {
+          class: List,
+          inlineToolbar: true,
+          config: {
+            defaultStyle: "unordered",
+          },
+        },
         warning: {
           class: Warning,
           inlineToolbar: true,
