@@ -43,6 +43,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "editorjs-alert": "^1.1.4",
+    "editorjs-text-alignment-blocktune": "^1.0.3",
     "emoji-picker-react": "^4.11.1",
     "firebase": "^10.13.0",
     "gsap": "^3.12.5",
