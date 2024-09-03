@@ -29,7 +29,9 @@ function RichDocumentEditor() {
     InitEditor();
   }, []);
   const SaveDocument = () => {
-    console.log("Save Document");
+    ref.current.save().then((outputData) => {
+      console.log(outputData);
+    });
   };
   const InitEditor = () => {
     if (!editor?.current) {
