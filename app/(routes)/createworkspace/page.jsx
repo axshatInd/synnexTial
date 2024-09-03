@@ -46,7 +46,7 @@ function CreateWorkspace() {
     setLoading(true);
     const workspaceId = Date.now();
     const result = await setDoc(doc(db, "Workspace", workspaceId.toString()), {
-      workspaceName: workspaceName,
+      workspaceName: workspacename,
       emoji: emoji,
       coverImage: coverImage,
       createdBy: user?.primaryEmailAddress?.emailAddress,
