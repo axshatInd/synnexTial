@@ -30,6 +30,7 @@ function WorkspaceList() {
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
       console.log(doc.data());
+      setWorkspaceList((prev) => [...prev, doc.data()]);
     });
   };
   const { theme } = useTheme(); // Get the current theme
@@ -113,7 +114,7 @@ function WorkspaceList() {
           </div>
         ) : (
           <div className="flex-grow mt-4">
-            <WorkspaceItemList />
+            <WorkspaceItemList workspaceList={workspaceList} />
           </div>
         )}
       </div>
