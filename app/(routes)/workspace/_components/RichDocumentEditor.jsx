@@ -28,6 +28,9 @@ function RichDocumentEditor() {
   useEffect(() => {
     InitEditor();
   }, []);
+  {
+    /* Used to Save Document */
+  }
   const SaveDocument = () => {
     ref.current.save().then((outputData) => {
       console.log(outputData);
