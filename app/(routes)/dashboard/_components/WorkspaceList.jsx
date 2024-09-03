@@ -20,14 +20,11 @@ function WorkspaceList() {
   }, [orgId, user]);
   const getWorkspaceList = async () => {
     const q = query(
-      collection(
-        db,
-        "Workspace",
-        where(
-          "orgId",
-          "==",
-          orgId ? orgId : user?.primaryEmailAddress?.emailAddress
-        )
+      collection(db, "Workspace"),
+      where(
+        "orgId",
+        "==",
+        orgId ? orgId : user?.primaryEmailAddress?.emailAddress
       )
     );
     const querySnapshot = await getDocs(q);
