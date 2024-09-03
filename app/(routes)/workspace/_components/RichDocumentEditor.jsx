@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import EditorJS from "@editorjs/editorjs";
 
 import Header from "@editorjs/header";
@@ -21,32 +21,58 @@ import RawTool from "@editorjs/raw";
 import CodeBox from "@bomdi/codebox";
 import Marker from "@editorjs/marker";
 import InlineCode from "@editorjs/inline-code";
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, onSnapshot, updateDoc } from "firebase/firestore";
 import { db } from "@/config/firebaseConfig";
+import { useUser } from "@clerk/nextjs";
+import { render } from "@headlessui/react/dist/utils/render";
 
 function RichDocumentEditor({ params }) {
   const ref = useRef();
   let editor;
+  const { user } = useUser();
+  const [documentOutput, setDocumentOutput] = useState([]);
+  let isFetched = false;
   useEffect(() => {
-    InitEditor();
-  }, []);
+    user && InitEditor();
+  }, [user]);
+
+  // useEffect(() => {
+  //   params && GetDocumentOutput();
+  // }, [params]);
   {
     /* Used to Save Document */
   }
   const SaveDocument = () => {
     ref.current.save().then(async (outputData) => {
-      console.log(outputData);
       const docRef = doc(db, "documentOutput", params?.documentid);
       await updateDoc(docRef, {
         output: outputData,
+        editedBy: user?.primaryEmailAddress?.emailAddress,
       });
     });
+  };
+
+  const GetDocumentOutput = () => {
+    const unsubscribe = onSnapshot(
+      doc(db, "documentOutput", params?.documentid),
+      (doc) => {
+        if (
+          isFetched == false ||
+          doc.data()?.editedBy != user?.primaryEmailAddress?.emailAddress
+        )
+          doc.data()?.output && editor.render(doc.data()?.output);
+        isFetched = true;
+      }
+    );
   };
   const InitEditor = () => {
     if (!editor?.current) {
       editor = new EditorJS({
         onChange: (ap, event) => {
           SaveDocument();
+        },
+        onReady: () => {
+          GetDocumentOutput();
         },
         /**
          * Id of Element that should contain Editor instance
