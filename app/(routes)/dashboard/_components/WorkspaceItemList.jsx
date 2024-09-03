@@ -3,10 +3,13 @@ import React from "react";
 
 function WorkspaceItemList({ workspaceList }) {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
       {workspaceList &&
         workspaceList.map((workspace, index) => (
-          <div key={index}>
+          <div
+            key={index}
+            className="border shadow-xl rounded-xl hover:scale-105 transition-all cursor-pointer"
+          >
             <Image
               src={workspace?.coverImage}
               width={400}
@@ -14,7 +17,11 @@ function WorkspaceItemList({ workspaceList }) {
               alt="cover"
               className="h-[150px] object-cover rounded-t-xl"
             />
-            <h2>{workspace.workspaceName}</h2>
+            <div className="p-4 rounded-b-xl">
+              <h2 className="flex gap-2">
+                {workspace?.emoji} {workspace.workspaceName}
+              </h2>
+            </div>
           </div>
         ))}
     </div>
