@@ -28,9 +28,15 @@ function RichDocumentEditor() {
   useEffect(() => {
     InitEditor();
   }, []);
+  const SaveDocument = () => {
+    console.log("Save Document");
+  };
   const InitEditor = () => {
     if (!editor?.current) {
       editor = new EditorJS({
+        onChange: (ap, event) => {
+          SaveDocument();
+        },
         /**
          * Id of Element that should contain Editor instance
          */
