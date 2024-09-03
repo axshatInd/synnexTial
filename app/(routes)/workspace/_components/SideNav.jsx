@@ -35,15 +35,14 @@ function SideNav({ params }) {
   const GetDocumentList = () => {
     const q = query(
       collection(db, "workspaceDocuments"),
-      where("workspaceId", "==", Number(params?.workspaceId))
+      where("workspaceId", "==", Number(params?.workspaceid))
     );
-    setDocumentList([]);
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      const documents = [];
+      setDocumentList([]);
+
       querySnapshot.forEach((doc) => {
-        documents.push(doc.data());
+        setDocumentList((documentList) => [...documentList, doc.data()]);
       });
-      setDocumentList(documents);
     });
   };
 
@@ -86,7 +85,7 @@ function SideNav({ params }) {
     setLoading(true);
     const docId = uuid4();
     await setDoc(doc(db, "workspaceDocuments", docId.toString()), {
-      workspaceId: Number(params?.workspaceId),
+      workspaceId: Number(params?.workspaceid),
       createdBy: user?.primaryEmailAddress?.emailAddress,
       coverImage: null,
       emoji: null,
@@ -96,7 +95,7 @@ function SideNav({ params }) {
     });
 
     setLoading(false);
-    router.replace("/workspace/" + params?.workspaceId + "/" + docId);
+    router.replace("/workspace/" + params?.workspaceid + "/" + docId);
   };
 
   const progressValue = (documentList.length / MAX_FILE) * 100;

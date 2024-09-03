@@ -119,7 +119,7 @@ function DocumentList({ documentList, params }) {
         <div
           key={index}
           onClick={() =>
-            router.push("/workspace/" + params?.workspaceId + "/" + doc?.id)
+            router.push("/workspace/" + params?.workspaceid + "/" + doc?.id)
           }
           ref={(el) => (itemsRef.current[index] = el)}
           className={`group flex items-center justify-between mb-4 mt-2 ml-6 py-1 px-2 rounded-2xl mr-4 cursor-pointer ${
