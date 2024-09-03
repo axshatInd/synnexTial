@@ -7,6 +7,7 @@ import Delimiter from "@editorjs/delimiter";
 import Alert from "editorjs-alert";
 import ToggleBlock from "editorjs-toggle-block";
 import List from "@editorjs/list";
+import NestedList from "@editorjs/nested-list";
 
 function RichDocumentEditor() {
   const ref = useRef();
@@ -61,7 +62,7 @@ function RichDocumentEditor() {
           },
 
           list: {
-            class: List,
+            class: NestedList,
             inlineToolbar: true,
             config: {
               defaultStyle: "unordered",
