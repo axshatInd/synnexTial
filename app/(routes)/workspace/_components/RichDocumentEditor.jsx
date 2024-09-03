@@ -33,16 +33,14 @@ function RichDocumentEditor({ params }) {
   let isFetched = false;
 
   useEffect(() => {
-    if (user) {
-      InitEditor();
-    }
+    user && InitEditor();
   }, [user]);
 
   const SaveDocument = () => {
     ref.current.save().then(async (outputData) => {
       const docRef = doc(db, "documentOutput", params?.documentid);
       await updateDoc(docRef, {
-        output: outputData,
+        output: JSON.stringify(outputData),
         editedBy: user?.primaryEmailAddress?.emailAddress,
       });
     });
@@ -53,11 +51,10 @@ function RichDocumentEditor({ params }) {
       doc(db, "documentOutput", params?.documentid),
       (doc) => {
         if (
-          !isFetched ||
-          doc.data()?.editedBy !== user?.primaryEmailAddress?.emailAddress
-        ) {
-          doc.data()?.output && editor.render(doc.data()?.output);
-        }
+          doc.data()?.editedBy != user?.primaryEmailAddress?.emailAddress ||
+          isFetched == false
+        )
+          doc.data().editedBy && editor?.render(JSON.parse(doc.data()?.output));
         isFetched = true;
       }
     );
