@@ -33,7 +33,9 @@ function RichDocumentEditor({ params }) {
   let isFetched = false;
 
   useEffect(() => {
-    user && InitEditor();
+    if (user) {
+      InitEditor();
+    }
   }, [user]);
 
   const SaveDocument = () => {
@@ -49,15 +51,37 @@ function RichDocumentEditor({ params }) {
   const GetDocumentOutput = () => {
     const unsubscribe = onSnapshot(
       doc(db, "documentOutput", params?.documentid),
-      (doc) => {
+      (docSnapshot) => {
+        if (!docSnapshot.exists()) {
+          console.error("Document does not exist.");
+          return;
+        }
+
+        const data = docSnapshot.data();
+        console.log("Fetched document data:", data);
+
         if (
-          doc.data()?.editedBy != user?.primaryEmailAddress?.emailAddress ||
-          isFetched == false
-        )
-          doc.data().editedBy && editor?.render(JSON.parse(doc.data()?.output));
-        isFetched = true;
+          data &&
+          data.editedBy &&
+          (data.editedBy !== user?.primaryEmailAddress?.emailAddress ||
+            !isFetched)
+        ) {
+          try {
+            const output = JSON.parse(data.output || "[]"); // Default to empty array if output is undefined
+            editor?.render(output);
+          } catch (error) {
+            console.error("Error parsing output data:", error);
+          }
+          isFetched = true;
+        }
+      },
+      (error) => {
+        console.error("Error fetching document:", error);
       }
     );
+
+    // Optionally return the unsubscribe function if needed
+    return unsubscribe;
   };
 
   const InitEditor = () => {
@@ -142,7 +166,15 @@ function RichDocumentEditor({ params }) {
               endpoint: "http://localhost:8008/uploadFile",
             },
           },
-          image: SimpleImage,
+          image: {
+            class: ImageTool,
+            config: {
+              endpoints: {
+                byFile: "http://localhost:8008/uploadFile",
+                byUrl: "http://localhost:8008/fetchUrl",
+              },
+            },
+          },
           table: {
             class: Table,
             inlineToolbar: true,
@@ -157,15 +189,7 @@ function RichDocumentEditor({ params }) {
               endpoint: "http://localhost:8008/fetchUrl",
             },
           },
-          image: {
-            class: ImageTool,
-            config: {
-              endpoints: {
-                byFile: "http://localhost:8008/uploadFile",
-                byUrl: "http://localhost:8008/fetchUrl",
-              },
-            },
-          },
+          image: SimpleImage,
         },
       });
       ref.current = editor;

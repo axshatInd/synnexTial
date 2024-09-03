@@ -20,7 +20,7 @@ import { useRouter } from "next/navigation";
 import { Progress } from "@/components/ui/progress";
 import { toast } from "sonner";
 
-const MAX_FILE = 6;
+const MAX_FILE = process.env.NEXT_PUBLIC_MAX_FILE_COUNT;
 
 function SideNav({ params }) {
   const [documentList, setDocumentList] = useState([]);

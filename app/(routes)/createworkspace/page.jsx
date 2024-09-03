@@ -45,8 +45,8 @@ function CreateWorkspace() {
   const OnCreateWorkspace = async () => {
     setLoading(true);
     const workspaceId = Date.now();
-    await setDoc(doc(db, "Workspace", workspaceId.toString()), {
-      workspaceName: workspacename,
+    const result = await setDoc(doc(db, "Workspace", workspaceId.toString()), {
+      workspaceName: workspaceName,
       emoji: emoji,
       coverImage: coverImage,
       createdBy: user?.primaryEmailAddress?.emailAddress,
@@ -64,13 +64,13 @@ function CreateWorkspace() {
       documentOutput: [],
     });
 
-    setLoading(false);
-    router.replace("/workspace/" + workspaceId + "/" + docId);
-
     await setDoc(doc(db, "documentOutput", docId.toString()), {
       docId: docId,
       output: [],
     });
+
+    setLoading(false);
+    router.replace("/workspace/" + workspaceId + "/" + docId);
   };
 
   return (
