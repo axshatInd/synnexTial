@@ -1,16 +1,40 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { useUser } from "@clerk/nextjs";
+import { useAuth, useUser } from "@clerk/nextjs";
 import { AlignLeft, LayoutGrid } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import useTheme from "@/app/_components/useTheme"; // Import useTheme to get the current theme
 import { gsap } from "gsap"; // Import GSAP
+import WorkspaceItemList from "./WorkspaceItemList";
+import { collection, doc, getDocs, query, where } from "firebase/firestore";
+import { db } from "@/config/firebaseConfig";
 
 function WorkspaceList() {
   const { user } = useUser();
+  const { orgId } = useAuth();
   const [workspaceList, setWorkspaceList] = useState([]);
+  useEffect(() => {
+    user && getWorkspaceList();
+  }, [orgId, user]);
+  const getWorkspaceList = async () => {
+    const q = query(
+      collection(
+        db,
+        "Workspace",
+        where(
+          "orgId",
+          "==",
+          orgId ? orgId : user?.primaryEmailAddress?.emailAddress
+        )
+      )
+    );
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      console.log(doc.data());
+    });
+  };
   const { theme } = useTheme(); // Get the current theme
   const isDarkMode = theme === "dark"; // Check if the current theme is dark mode
 
@@ -91,7 +115,9 @@ function WorkspaceList() {
             </Link>
           </div>
         ) : (
-          <div className="flex-grow mt-4">Workspace List</div>
+          <div className="flex-grow mt-4">
+            <WorkspaceItemList />
+          </div>
         )}
       </div>
 
