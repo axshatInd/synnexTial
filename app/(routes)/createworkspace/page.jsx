@@ -69,7 +69,7 @@ function CreateWorkspace() {
 
     await setDoc(doc(db, "documentOutput", docId.toString()), {
       docId: docId,
-      Output: [],
+      output: [],
     });
   };
 

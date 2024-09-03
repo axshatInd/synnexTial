@@ -21,8 +21,10 @@ import RawTool from "@editorjs/raw";
 import CodeBox from "@bomdi/codebox";
 import Marker from "@editorjs/marker";
 import InlineCode from "@editorjs/inline-code";
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "@/config/firebaseConfig";
 
-function RichDocumentEditor() {
+function RichDocumentEditor({ params }) {
   const ref = useRef();
   let editor;
   useEffect(() => {
@@ -32,8 +34,12 @@ function RichDocumentEditor() {
     /* Used to Save Document */
   }
   const SaveDocument = () => {
-    ref.current.save().then((outputData) => {
+    ref.current.save().then(async (outputData) => {
       console.log(outputData);
+      const docRef = doc(db, "documentOutput", params?.documentid);
+      await updateDoc(docRef, {
+        output: outputData,
+      });
     });
   };
   const InitEditor = () => {
