@@ -21,7 +21,7 @@ import RawTool from "@editorjs/raw";
 import CodeBox from "@bomdi/codebox";
 import Marker from "@editorjs/marker";
 import InlineCode from "@editorjs/inline-code";
-import { doc, onSnapshot, updateDoc } from "firebase/firestore";
+import { doc, onSnapshot, updateDoc, setDoc, getDoc } from "firebase/firestore";
 import { db } from "@/config/firebaseConfig";
 import { useUser } from "@clerk/nextjs";
 
@@ -38,19 +38,37 @@ function RichDocumentEditor({ params }) {
     }
   }, [user]);
 
-  const SaveDocument = () => {
+  const SaveDocument = async () => {
+    const workspaceId = "yourWorkspaceId"; // Replace with actual workspace ID
+    const docRef = doc(
+      db,
+      `workspaces/${workspaceId}/documents`,
+      params?.documentid
+    );
+    const docSnapshot = await getDoc(docRef);
+
     ref.current.save().then(async (outputData) => {
-      const docRef = doc(db, "documentOutput", params?.documentid);
-      await updateDoc(docRef, {
-        output: JSON.stringify(outputData),
-        editedBy: user?.primaryEmailAddress?.emailAddress,
-      });
+      if (docSnapshot.exists()) {
+        // Document exists, so update it
+        await updateDoc(docRef, {
+          output: JSON.stringify(outputData),
+          editedBy: user?.primaryEmailAddress?.emailAddress,
+        });
+      } else {
+        // Document doesn't exist, so create it
+        await setDoc(docRef, {
+          output: JSON.stringify(outputData),
+          editedBy: user?.primaryEmailAddress?.emailAddress,
+          createdAt: new Date(),
+        });
+      }
     });
   };
 
   const GetDocumentOutput = () => {
+    const workspaceId = "yourWorkspaceId"; // Replace with actual workspace ID
     const unsubscribe = onSnapshot(
-      doc(db, "documentOutput", params?.documentid),
+      doc(db, `workspaces/${workspaceId}/documents`, params?.documentid),
       (docSnapshot) => {
         if (!docSnapshot.exists()) {
           console.error("Document does not exist.");
@@ -80,7 +98,6 @@ function RichDocumentEditor({ params }) {
       }
     );
 
-    // Optionally return the unsubscribe function if needed
     return unsubscribe;
   };
 
