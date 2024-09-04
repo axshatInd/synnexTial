@@ -7,7 +7,7 @@ import Delimiter from "@editorjs/delimiter";
 import Alert from "editorjs-alert";
 import ToggleBlock from "editorjs-toggle-block";
 import List from "@editorjs/list";
-import NestedList from "@editorjs/nested-list";
+// import NestedList from "@editorjs/nested-list";
 import Checklist from "@editorjs/checklist";
 import editorjsNestedChecklist from "@calumk/editorjs-nested-checklist";
 
@@ -133,7 +133,7 @@ function RichDocumentEditor({ params }) {
             inlineToolbar: true,
           },
           list: {
-            class: NestedList,
+            class: List,
             inlineToolbar: true,
             config: {
               defaultStyle: "unordered",
