@@ -111,9 +111,6 @@ function SideNav({ params }) {
         <div ref={logoRef}>
           <Logo2 />
         </div>
-        <div className="relative" ref={bellRef}>
-          <Bell className="h-8 w-8 p-2 rounded-full bg-gray-200 dark:bg-white text-gray-800 dark:text-black shadow-md" />
-        </div>
       </div>
       <hr className="mt-0.20rem mb-0.10rem" />
 
