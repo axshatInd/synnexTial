@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { LayoutGrid } from "lucide-react";
+import { LayoutGrid, Loader2Icon } from "lucide-react";
 import React, { useState } from "react";
 import {
   Dialog,
@@ -9,9 +9,21 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { chatSession } from "@/config/GoogleAIModel";
 
 function GenerateAITemplate() {
   const [open, setOpen] = useState(false);
+  const [userInput, setUserInput] = useState();
+  const [loading, setLoading] = useState(false);
+  const GenerateFromAI = async () => {
+    setLoading(true);
+    const PROMPT = "Generate template for editor.js in JSON for" + userInput;
+    const result = await chatSession.sendMessage(PROMPT);
+    console.log(result.response.text());
+    setLoading(false);
+    setOpen(false);
+  };
   return (
     <div>
       <Button
@@ -26,10 +38,29 @@ function GenerateAITemplate() {
       <Dialog open={open}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Are you absolutely sure?</DialogTitle>
+            <DialogTitle>Generate from AI</DialogTitle>
             <DialogDescription>
-              This action cannot be undone. This will permanently delete your
-              account and remove your data from our servers.
+              <h2 className="mt-5 mb-3">What's on your mind?</h2>
+              <Input
+                placeholder="Ex. Project Ideas"
+                onChange={(event) => setUserInput(event?.target.value)}
+              />
+              <div className="mt-5 flex gap-5 justify-end">
+                <Button variant="ghost" onClick={() => setOpen(false)}>
+                  Cancel
+                </Button>
+                <Button
+                  variant=""
+                  disabled={!userInput || loading}
+                  onClick={() => GenerateFromAI()}
+                >
+                  {loading ? (
+                    <Loader2Icon className="animate-spin" />
+                  ) : (
+                    "Generate"
+                  )}
+                </Button>
+              </div>
             </DialogDescription>
           </DialogHeader>
         </DialogContent>
