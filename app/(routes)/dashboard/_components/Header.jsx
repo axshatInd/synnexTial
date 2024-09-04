@@ -19,18 +19,17 @@ function Header() {
     user && saveUserData();
   }, [user]);
 
-  {
-    /* Used to save user data */
-  }
+  /**
+   * Used to save user data
+   */
   const saveUserData = async () => {
     const docId = user?.primaryEmailAddress?.emailAddress;
     try {
-      await setDoc(doc(db, "SynnexUsers", docId)),
-        {
-          name: user?.fullName,
-          avatar: user?.imageUrl,
-          email: user?.primaryEmailAddress?.emailAddress,
-        };
+      await setDoc(doc(db, "SynnexUsers", docId), {
+        name: user?.fullName,
+        avatar: user?.imageUrl,
+        email: user?.primaryEmailAddress?.emailAddress,
+      });
     } catch (e) {}
   };
   const headerRef = useRef(null);
