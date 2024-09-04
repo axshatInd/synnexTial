@@ -2,11 +2,37 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import Logo from "@/app/_components/Logo";
-import { OrganizationSwitcher, useAuth, UserButton } from "@clerk/nextjs";
+import {
+  OrganizationSwitcher,
+  useAuth,
+  UserButton,
+  useUser,
+} from "@clerk/nextjs";
 import useTheme from "@/app/_components/useTheme"; // Import useTheme here
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "@/config/firebaseConfig";
 
 function Header() {
   const { orgId } = useAuth();
+  const { user } = useUser();
+  useEffect(() => {
+    user && saveUserData();
+  }, [user]);
+
+  {
+    /* Used to save user data */
+  }
+  const saveUserData = async () => {
+    const docId = user?.primaryEmailAddress?.emailAddress;
+    try {
+      await setDoc(doc(db, "SynnexUsers", docId)),
+        {
+          name: user?.fullName,
+          avatar: user?.imageUrl,
+          email: user?.primaryEmailAddress?.emailAddress,
+        };
+    } catch (e) {}
+  };
   const headerRef = useRef(null);
 
   useEffect(() => {
