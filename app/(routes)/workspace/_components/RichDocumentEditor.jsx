@@ -70,26 +70,13 @@ function RichDocumentEditor({ params }) {
     const unsubscribe = onSnapshot(
       doc(db, `workspaces/${workspaceId}/documents`, params?.documentid),
       (docSnapshot) => {
-        if (!docSnapshot.exists()) {
-          console.error("Document does not exist.");
-          return;
-        }
-
-        const data = docSnapshot.data();
-        console.log("Fetched document data:", data);
-
         if (
-          data &&
-          data.editedBy &&
-          (data.editedBy !== user?.primaryEmailAddress?.emailAddress ||
-            !isFetched)
+          docSnapshot.data()?.editedBy !==
+            user?.primaryEmailAddress?.emailAddress ||
+          !isFetched
         ) {
-          try {
-            const output = JSON.parse(data.output || "[]"); // Default to empty array if output is undefined
-            editor?.render(output);
-          } catch (error) {
-            console.error("Error parsing output data:", error);
-          }
+          docSnapshot.data()?.editedBy &&
+            editor?.render(JSON.parse(docSnapshot.data()?.output));
           isFetched = true;
         }
       },
@@ -97,8 +84,6 @@ function RichDocumentEditor({ params }) {
         console.error("Error fetching document:", error);
       }
     );
-
-    return unsubscribe;
   };
 
   const InitEditor = () => {
