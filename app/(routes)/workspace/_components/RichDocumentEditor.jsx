@@ -24,6 +24,7 @@ import InlineCode from "@editorjs/inline-code";
 import { doc, onSnapshot, updateDoc, setDoc, getDoc } from "firebase/firestore";
 import { db } from "@/config/firebaseConfig";
 import { useUser } from "@clerk/nextjs";
+import GenerateAITemplate from "./GenerateAITemplate";
 
 function RichDocumentEditor({ params }) {
   const ref = useRef();
@@ -202,6 +203,9 @@ function RichDocumentEditor({ params }) {
     <div className="w-full h-[calc(100vh-120px)] p-5 box-border flex items-center justify-center rounded-md">
       <div className="w-full h-full border border-gray-300 box-border p-2 overflow-auto rounded-md">
         <div id="editorjs"></div>
+        <div className="fixed bottom-10 md:ml-80 left-13 z-10">
+          <GenerateAITemplate />
+        </div>
       </div>
     </div>
   );
