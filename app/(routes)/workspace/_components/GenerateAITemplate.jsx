@@ -12,7 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { chatSession } from "@/config/GoogleAIModel";
 
-function GenerateAITemplate() {
+function GenerateAITemplate({ setGenerateAIOutput }) {
   const [open, setOpen] = useState(false);
   const [userInput, setUserInput] = useState();
   const [loading, setLoading] = useState(false);
@@ -21,6 +21,13 @@ function GenerateAITemplate() {
     const PROMPT = "Generate template for editor.js in JSON for" + userInput;
     const result = await chatSession.sendMessage(PROMPT);
     console.log(result.response.text());
+
+    try {
+      const output = JSON.parse(result.response.text());
+      setGenerateAIOutput(output);
+    } catch (e) {
+      setLoading(false);
+    }
     setLoading(false);
     setOpen(false);
   };

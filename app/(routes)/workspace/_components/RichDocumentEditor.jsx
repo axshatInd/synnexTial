@@ -204,7 +204,9 @@ function RichDocumentEditor({ params }) {
       <div className="w-full h-full border border-gray-300 box-border p-2 overflow-auto rounded-md">
         <div id="editorjs"></div>
         <div className="fixed bottom-10 md:ml-80 left-13 z-10">
-          <GenerateAITemplate />
+          <GenerateAITemplate
+            setGenerateAIOutput={(output) => editor?.render(output)}
+          />
         </div>
       </div>
     </div>
