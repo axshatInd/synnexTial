@@ -7,12 +7,21 @@ import { gsap } from "gsap";
 
 export default function Home() {
   useEffect(() => {
-    // GSAP animation for intro and button
+    // GSAP animation for intro text
     gsap.fromTo(
       ".intro-text",
       { opacity: 0, y: 50 },
       { opacity: 1, y: 0, duration: 2, ease: "power3.out", delay: 1 }
     );
+
+    // GSAP animation for subtitle text
+    gsap.fromTo(
+      ".subtitle-text",
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 1.5, ease: "power2.out", delay: 1.5 }
+    );
+
+    // GSAP animation for button
     gsap.fromTo(
       ".get-started-btn",
       { opacity: 0, scale: 0.5 },
@@ -38,14 +47,25 @@ export default function Home() {
       <div className="relative z-10 flex flex-col items-center justify-center h-full w-full text-center px-4">
         {/* Intro text with light white gradient and outline */}
         <h1
-          className="intro-text text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-100 text-3xl font-bold sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
+          className="intro-text text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-100 text-2xl font-bold sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
           style={{
             textShadow:
               "0 1px 2px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.4), 0 4px 8px rgba(0, 0, 0, 0.3)",
           }}
         >
-          Welcome to SynnexTial
+          SynnexTial
         </h1>
+
+        {/* Subtitle text */}
+        <p
+          className="subtitle-text mt-4 text-white text-sm sm:text-lg md:text-xl"
+          style={{
+            textShadow:
+              "0 1px 2px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2)",
+          }}
+        >
+          Your workspace for innovative solutions and creative ideas.
+        </p>
 
         {/* Get Started Button */}
         <Link href="/dashboard" passHref>
