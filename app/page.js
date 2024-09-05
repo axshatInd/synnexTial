@@ -69,7 +69,7 @@ export default function Home() {
 
         {/* Get Started Button */}
         <Link href="/dashboard" passHref>
-          <Button className="get-started-btn mt-6 sm:mt-8 bg-gray-800 text-white font-semibold px-6 py-3 md:px-8 md:py-4 rounded-full hover:bg-black">
+          <Button className="get-started-btn mt-6 sm:mt-8 bg-purple-900 text-white font-semibold px-6 py-3 md:px-8 md:py-4 rounded-full hover:bg-black">
             Get Started
           </Button>
         </Link>
