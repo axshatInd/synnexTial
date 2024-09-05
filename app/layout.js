@@ -6,8 +6,8 @@ import { ClerkProvider } from "@clerk/nextjs";
 import Header from "./(routes)/dashboard/_components/Header";
 import ThemeSwitcher from "./_components/ThemeSwitcher"; // Import ThemeSwitcher
 import useTheme from "./_components/useTheme";
-import Head from "next/head"; // Import Head from next/head
 import { Toaster } from "@/components/ui/sonner";
+import Head from "next/head";
 
 // Font configurations
 const outfit = Outfit({ subsets: ["latin"] });
@@ -35,18 +35,25 @@ export default function RootLayout({ children }) {
     <ClerkProvider>
       <html lang="en">
         <Head>
-          <title>SynnexTial</title> {/* Set the page title */}
+          <title>SynnexTial</title>
           <meta
             name="description"
-            content="A collaborative workspace you needed."
-          />{" "}
-          {/* Set the description */}
+            content="SynnexTial: Your workspace for innovative solutions and creative ideas."
+          />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1"
-          />{" "}
-          {/* Responsive design */}
-          {/* Add other meta tags or link tags as needed */}
+            name="keywords"
+            content="SynnexTial, workspace, innovative solutions, creative ideas"
+          />
+          <meta name="author" content="SynnexTial" />
+          <meta property="og:title" content="SynnexTial" />
+          <meta
+            property="og:description"
+            content="SynnexTial: Your workspace for innovative solutions and creative ideas."
+          />
+          <meta property="og:url" content="https://synnextial.vercel.app" />
+          <meta property="og:site_name" content="SynnexTial" />
+          <meta property="og:type" content="website" />
         </Head>
         <body
           className={`${outfit.className} ${theme} flex flex-col min-h-screen`}
