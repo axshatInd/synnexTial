@@ -2,8 +2,6 @@
 
 > **SynnexTial** is a collaborative document management platform built to enhance teamwork and productivity. It allows users to create, edit, and collaborate on documents in real-time within shared workspaces. This powerful and intuitive platform is perfect for teams looking to streamline their workflow and keep everyone on the same page.
 
-![SynnexTial Banner](URL_to_your_project_banner_image)
-
 ## Table of Contents
 
 - [About the Project](#about-the-project)
